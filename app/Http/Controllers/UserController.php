@@ -24,7 +24,16 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        //dd(Auth()->user()->can('user.create'));
+
+
+        //if (Auth()->user()->can('user.create')) { 
+        //alles van create uitvoeren
+        //} else {}
+        // abort(403, 'Get the FUCK out of here);
+        //}
+
+
     }
 
     /**

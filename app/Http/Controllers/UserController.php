@@ -14,7 +14,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        //dd(Auth()->user()->can('user.show'));
+
+        //if (Auth()->user()->can('user.show')) { 
+        //alles van show uitvoeren
+        //} else {}
+        // abort(403, 'Get the FUCK out of here);
+        //}
     }
 
     /**

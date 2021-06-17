@@ -3,3 +3,7 @@
 @if (Auth()->user()->can('user.create'))
 <button><a href="{{ Route('user.create') }}">Toevoegen</a></button>
 @endif -->
+
+<!-- @can('user.create')
+
+@endcan -->

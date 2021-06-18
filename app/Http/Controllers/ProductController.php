@@ -12,9 +12,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Product $product)
     {
-        //
+        return view('products.index', [
+            'products' => Product::all(),
+        ]);
     }
 
     /**
@@ -46,7 +48,10 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('products.show', [
+            'product'  => $product,
+            'category' => $product->category()->get(),
+        ]);
     }
 
     /**

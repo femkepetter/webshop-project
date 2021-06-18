@@ -9,9 +9,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
         return view('category.index', [
-            'categories' => $categories
+            'category' => Category::all()
         ]);
     }
 
@@ -19,7 +18,7 @@ class CategoryController extends Controller
     {
         return view('category.show', [
             'category'  => $category,
-            'items'     => $category->items()
+            'products'   => $category->products()->get(),
         ]);
     }
 }

@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// P R O D U C T S
+Route::resource('/product', 'App\Http\Controllers\ProductController');
+
+// C A T E G O R I E S
+Route::resource('/category', 'App\Http\Controllers\CategoryController');

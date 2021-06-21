@@ -23,3 +23,6 @@ Route::resource('/product', 'App\Http\Controllers\ProductController');
 
 // C A T E G O R I E S
 Route::resource('/category', 'App\Http\Controllers\CategoryController');
+
+// C A R T
+Route::resource('/cart', 'App\Http\Controllers\CartController');

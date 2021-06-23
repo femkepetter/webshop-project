@@ -1,5 +1,9 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,9 +13,12 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+<<<<<<< HEAD
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+=======
+>>>>>>> main
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -19,10 +26,15 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+<<<<<<< HEAD
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -72,6 +84,9 @@
                         @endguest
                     </ul>
                 </div>
+=======
+                <span>Navbar</span>
+>>>>>>> main
             </div>
         </nav>
 
@@ -79,5 +94,14 @@
             @yield('content')
         </main>
     </div>
+<<<<<<< HEAD
 </body>
 </html>
+=======
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    @stack('child-script')
+</body>
+
+</html>
+>>>>>>> main

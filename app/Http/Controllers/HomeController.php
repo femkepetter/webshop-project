@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
+=======
+use App\Models\Product;
+>>>>>>> main
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +17,11 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+<<<<<<< HEAD
         $this->middleware('auth');
+=======
+        //$this->middleware('auth');
+>>>>>>> main
     }
 
     /**
@@ -23,6 +31,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         return view('home');
+=======
+        return view('home', [
+            'products' => Product::all(),
+        ]);
+>>>>>>> main
     }
 }

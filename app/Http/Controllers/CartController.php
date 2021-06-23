@@ -11,10 +11,16 @@ class CartController extends Controller
 {
     public function show(Request $request, Product $product)
     {
-        $cart = $request->session()->get('cart');
-        $product = Product::findOrFail($cart['product_id']);
-        $name = $product['name'];
-        dd($name);
+        $cart = session('cart');
+        $cartArray = [];
+
+        // if($cart != null){
+        //     foreach $cart as 
+        // }
+
+        //$product = Product::findOrFail($cart['product_id']);
+        //$product['name'];
+        dd($product);
 
         return view('cart.show', [
             'cart' => $cart,

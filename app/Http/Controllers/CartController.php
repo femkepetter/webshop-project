@@ -14,13 +14,17 @@ class CartController extends Controller
         $cart = session('cart');
         $cartArray = [];
 
-        // if($cart != null){
-        //     foreach $cart as 
-        // }
+        if ($cart != null) {
+            foreach ($cart as $item) {
+                foreach ($item as $id) {
+                    $cartArray[] = Product::findOrFail($cart['product_id']);
+                };
+            };
+        }
 
         //$product = Product::findOrFail($cart['product_id']);
         //$product['name'];
-        dd($product);
+        dd($cartArray);
 
         return view('cart.show', [
             'cart' => $cart,

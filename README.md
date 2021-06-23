@@ -17,3 +17,4 @@
 ## CSS & JS
 - CSS and JavaScript goes in the resources folder
 - npm run watch
+- every time you edit CSS or JS: npm run watch

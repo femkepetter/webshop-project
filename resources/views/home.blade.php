@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row px-5 gx-5">
-    <div class="col-4">
-        <h1>We sell only the best videogames.</h1>
+<div class="row">
+    <div class="col-xl-4 col-md-12">
+        <h1>We sell only the best video-games.</h1>
 
         <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam blanditiis obcaecati odit
@@ -22,8 +22,8 @@
             libero.
         </p>
     </div>
-    <div class="col-8">
-        <img src="https://picsum.photos/300" alt="" class="img-fluid">
+    <div class="col-lg-8 col-md-12">
+        <img src="https://picsum.photos/600/400" alt="" class="img-fluid">
     </div>
 </div>
 
@@ -34,33 +34,36 @@
 </div>
 
 @foreach ($products as $product)
-@if ($loop -> iteration < 7 ) <div class="col-4">
-    <img src="https://picsum.photos/300" alt="" class="img-fluid">
-    <div class="row my-2">
-        <div class="col-9 text-end my-auto mt-2">
-            <a href="{{ route('product.show', $product) }}">
-                <h3>{{ $product->name }} ${{ $product->price }}</h3>
-            </a>
-        </div>
-        <div class="col-3 text-end">
-            <button type="button" class="btn btn-cart " id="${{ $product->id }}"><i
-                    class="bi bi-bag-plus-fill hvr-grow"></i></button>
+@if ($loop -> iteration < 7 )
 
-            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
-                <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="toast-header">
-                        <img src="..." class="rounded me-2" alt="...">
-                        <strong class="me-auto">Bootstrap</strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                    <div class="toast-body">
-                        Added product to cart
+    <div class="col-md-6 col-xl-4">
+        <img src="https://picsum.photos/300/200" alt="" class="img-fluid">
+            <div class="row my-2">
+                <div class="col-sm-8 col-lg-9  my-auto mt-2">
+                    <a href="{{ route('product.show', $product) }}">
+                        <h3>{{ $product->name }} ${{ $product->price }}</h3>
+                    </a>
+                </div>
+                <div class="col-sm-12 col-md-3 col-lg-3 text-center">
+                    <button type="button" class="btn btn-cart " id="${{ $product->id }}"><i
+                            class="bi bi-bag-plus-fill hvr-grow"></i></button>
+
+                    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
+                        <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header">
+                                <img src="..." class="rounded me-2" alt="...">
+                                <strong class="me-auto">Bootstrap</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                            <div class="toast-body">
+                                Added product to cart
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </div>
-    </div>
+
     @endif
     @endforeach
 

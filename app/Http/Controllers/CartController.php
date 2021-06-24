@@ -19,6 +19,7 @@ class CartController extends Controller
                 'product' => 'required'
             ]);
 
+            //$request->session()->flush();
             $request->session()->push('cart', [$product->id => 1]);
 
             return response()->json([

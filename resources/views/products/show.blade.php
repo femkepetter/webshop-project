@@ -46,8 +46,7 @@
         </p>
 
         <div class="text-center divider">
-            <button type="button" class="btn btn-cart py-2 px-4 cart-button" id="liveToastBtn"
-                product_id="{{ $product->id }}">
+            <button type="button" class="btn btn-cart py-2 px-4 cart-button" id="liveToastBtn" route="{{route('product.cart', $product->id)}}" onclick="addToCart()">
                 <i class="bi bi-bag-plus-fill "></i> Add to cart.
             </button>
 

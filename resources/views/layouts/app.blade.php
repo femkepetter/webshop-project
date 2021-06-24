@@ -33,14 +33,44 @@
 
     <div id="app">
 
-        <div class="container-fluid">
+
+        <main class="container-fluid">
+            @include('layouts.components.navbar')
+            <section class="glass justify-content-center mx-auto shadow px-5 py-4">
+
+
+                <div class="row px-5 gx-5 mb-5">
+
+                    @yield('content')
+
+                </div>
+
+
+                <div class="row mx-auto mt-5">
+                    <div class="col-12 d-flex justify-content-center mt-5 ">
+                        <h2>
+                            <i class="socialmedia bi bi-facebook"></i>
+                            <i class="socialmedia bi bi-instagram"></i>
+                            <i class="socialmedia bi bi-linkedin"></i>
+                            <i class="socialmedia bi bi-twitter"></i>
+                        </h2>
+                    </div>
+                    <div class="col d-flex justify-content-center copyright"> ©Copyright Femke & Nina productions
+                    </div>
+
+                </div>
+
+            </section>
+        </main>
+
+        <!-- <div class="container-fluid">
 
             @include('layouts.components.navbar')
 
             <main class="py-4">
                 @yield('content')
             </main>
-        </div>
+        </div> -->
 
     </div>
     <!-- Scripts -->

@@ -34,7 +34,7 @@
 </div>
 
 @foreach ($products as $product)
-<div class="col-4">
+@if ($loop -> iteration < 7 ) <div class="col-4">
     <img src="https://picsum.photos/300" alt="" class="img-fluid">
     <div class="row my-2">
         <div class="col-9 text-end my-auto mt-2">
@@ -43,7 +43,7 @@
             </a>
         </div>
         <div class="col-3 text-end">
-            <button type="button" class="btn btn-cart" id="liveToastBtn"><i
+            <button type="button" class="btn btn-cart " id="${{ $product->id }}"><i
                     class="bi bi-bag-plus-fill hvr-grow"></i></button>
 
             <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
@@ -60,12 +60,14 @@
             </div>
         </div>
     </div>
-</div>
-@endforeach
+    </div>
+    @endif
+    @endforeach
 
 
 
-<!-- <div class="container">
+
+    <!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <h1>Homepage</h1>
@@ -89,4 +91,4 @@
         </div>
     </div>
 </div> -->
-@endsection
+    @endsection

@@ -4,7 +4,7 @@
 
 
 <div class="row px-5 gx-5">
-    <div class="col-8">
+    <div class="col-xl-8">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -37,18 +37,20 @@
             </button>
         </div>
     </div>
-    <div class="col-4">
+    <div class="col-xl-4">
         <h1>{{ $product->name }}.</h1>
         <h3>${{ $product->price }}</h3>
         <h3>In stock: Yes</h3>
         <p>
             {{ $product->description }}
         </p>
+
         <div class="text-center divider">
             <button type="button" class="btn btn-cart py-2 px-4 cart-button" id="liveToastBtn"
                 product_id="{{ $product->id }}">
-                <h2 class="hvr-grow pt-2"><i class="bi bi-bag-plus-fill "></i> Add to cart.</h2>
+                <i class="bi bi-bag-plus-fill "></i> Add to cart.
             </button>
+
             <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
                 <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="toast-header">
@@ -61,7 +63,11 @@
                     </div>
                 </div>
             </div>
+
         </div>
+        <a href="{{ route('category.show', $product->category) }}">
+            {{ $product->category->name }}</p></a>
+
     </div>
 </div>
 

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white mx-auto py-4">
+<nav class="navbar navbar-expand-xl navbar-light bg-white mx-auto py-4">
         <div class="container-fluid">
             <div id="logo">
                 <i class="bi bi-controller hvr-grow"></i>
@@ -32,7 +32,7 @@
                     </li>
                 </ul>
                 <form class="d-flex mx-auto">
-                    <input class="form-control d-none d-xl-flex" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control d-none d-xxl-flex" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-cart mx-2" type="submit"><i class="bi bi-search hvr-grow"></i></button>
                 </form>
                 <button class="btn btn-cart px-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"

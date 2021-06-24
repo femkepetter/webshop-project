@@ -23,7 +23,7 @@
         </p>
     </div>
     <div class="col-lg-8 col-md-12">
-        <img src="https://picsum.photos/600/400" alt="" class="img-fluid">
+        <img src="https://picsum.photos/800/600" alt="" class="img-fluid">
     </div>
 </div>
 
@@ -37,7 +37,7 @@
 @if ($loop -> iteration < 7 )
 
     <div class="col-md-6 col-xl-4">
-        <img src="https://picsum.photos/300/200" alt="" class="img-fluid">
+        <img src="https://picsum.photos/320/250" alt="" class="img-fluid">
             <div class="row my-2">
                 <div class="col-sm-8 col-lg-9  my-auto mt-2">
                     <a href="{{ route('product.show', $product) }}">

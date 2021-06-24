@@ -8,7 +8,10 @@
                     <div class="col-8">
 
                         <p> Current shopping cart </p>
-                        <p> {{ $cart->product_id }} </p>
+                        @foreach($cartArray as $product)
+                        <p> {{ $product->name }} </p>
+                        <p> {{ $product->price }} </p>
+                        @endforeach
                         <p> Your total price is €??,- </p>
 
                             <button class="btn btn-warning">Complete information & Pay</button>

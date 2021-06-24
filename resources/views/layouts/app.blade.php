@@ -86,11 +86,11 @@
 
 
     <script>
-        $(document).ready(function () {
-            document.getElementById("liveToastBtn").onclick = function () {
-                $('.toast').toast('show');
-            }
-        })
+        // $(document).ready(function () {
+        //     document.getElementById("liveToastBtn").onclick = function () {
+        //         $('.toast').toast('show');
+        //     }
+        // })
 
         var myCarousel = document.querySelector('#myCarousel')
         var carousel = new bootstrap.Carousel(myCarousel, {

@@ -26,7 +26,27 @@ class ProductController extends Controller
         ]);
     }
 
-    public function addToCart()
+    public function addToCart(Request $request, Product $product)
     {
+
+        try {
+            $validated = $request->validate([
+                'product' => 'required'
+            ]);
+            //$request->session()->forget('cart');
+
+            $request->session()->push('cart', [$product->id => 1]);
+
+            return response()->json([
+                'succes' => true
+            ]);
+        } catch (Exception $e) {
+
+            return response()->json([
+                'succes' => false,
+                'request' => $request->item,
+                'message' => $e->getMessage()
+            ]);
+        }
     }
 }

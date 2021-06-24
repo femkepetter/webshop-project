@@ -48,10 +48,10 @@
 </div>
 
 <div class="text-center divider">
-    <button type="button" class="btn btn-cart py-2 px-4 cart-button" id="liveToastBtn" product_id="{{ $product->id }}">
+    <button type="button" route="{{route('product.cart', $product->id)}}" class="btn btn-cart py-2 px-4 cart-button" id="liveToastBtn" onclick="addToCart()">
         <h2 class="hvr-grow pt-2"><i class="bi bi-bag-plus-fill "></i> Add to cart.</h2>
     </button>
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
+    {{-- <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
         <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
                 <img src="..." class="rounded me-2" alt="...">
@@ -62,48 +62,30 @@
                 Added product to cart 1
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
-
-
-<!-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <h1>{{ $product->name }}</h1>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col">
-                        <img src="https://picsum.photos/300" alt="placeholder">
-                        <p>{{ $product->price }}</p>
-                        <p>{{ $product->description }}</p>
-                        <button class="cart-button" type="button" class="btn btn-success" product_id="{{ $product->id }}">Add to cart</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 @endsection
 
 @push('child-script')
 <script>
-    $(document).ready(function () {
-        $('.cart-button').on('click', function () {
-            //console.log($(this).attr('product_id'));
-            axios({
-                url: '{{ Route("cart.store") }}',
-                method: 'POST',
-                data: {
-                    product_id: $(this).attr('product_id'),
-                }
-            }).then(function (response) {
-                if (response.data.success === true) {
-                    console.log(response.data)
-                }
-            }).catch(function (response) {
-                console.log(response.data.message)
-            })
-        })
-    })
+            function addToCart(){
+                let product = {!! json_encode($product) !!};
+                let cartButton = document.getElementById('liveToastBtn');
+                axios({
+                    url: cartButton.getAttribute('route'),
+                    method: 'PUT',
+                    data: {
+                        product: product
+                    }
+                }).then(function(response) {
+                    if (response.data.succes === true) {
+                        console.log('yay!');
+                    } else {
+                        console.log('this doesnt work');
+                    }
+                }).catch(function(response) {
+                    alert(response.data.message)
+                })
+            }
 </script>
 @endpush

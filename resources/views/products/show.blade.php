@@ -80,26 +80,30 @@
 </div> -->
 @endsection
 
+
 @push('child-script')
 <script>
-            function addToCart(){
-                let product = {!! json_encode($product) !!};
-                let cartButton = document.getElementById('liveToastBtn');
-                axios({
-                    url: cartButton.getAttribute('route'),
-                    method: 'PUT',
-                    data: {
-                        product: product
-                    }
-                }).then(function(response) {
-                    if (response.data.succes === true) {
-                        console.log('yay!');
-                    } else {
-                        console.log('this doesnt work');
-                    }
-                }).catch(function(response) {
-                    alert(response.data.message)
-                })
+    function addToCart() {
+        let product = {
+            !!json_encode($product) !!
+        };
+        let cartButton = document.getElementById('liveToastBtn');
+        axios({
+            url: cartButton.getAttribute('route'),
+            method: 'PUT',
+            data: {
+                product: product
             }
+        }).then(function (response) {
+            if (response.data.succes === true) {
+                console.log('yay!');
+            } else {
+                console.log('this doesnt work');
+            }
+        }).catch(function (response) {
+            alert(response.data.message)
+        })
+    }
+
 </script>
 @endpush

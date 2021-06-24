@@ -87,7 +87,7 @@
 
     <script>
         // $(document).ready(function () {
-        //     document.getElementById("liveToastBtn").onclick = function () {
+        //     document.getElementById("{{ $product->id }}").onclick = function () {
         //         $('.toast').toast('show');
         //     }
         // })

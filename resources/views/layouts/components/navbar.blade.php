@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white mx-auto py-4">
+<nav class="navbar navbar-expand-xl navbar-light bg-white mx-auto py-4">
         <div class="container-fluid">
             <div id="logo">
                 <i class="bi bi-controller hvr-grow"></i>
@@ -32,17 +32,17 @@
                     </li>
                 </ul>
                 <form class="d-flex mx-auto">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-cart" type="submit"><i class="bi bi-search hvr-grow"></i></button>
+                    <input class="form-control d-none d-xxl-flex" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-cart mx-2" type="submit"><i class="bi bi-search hvr-grow"></i></button>
                 </form>
-                <button class="btn btn-cart" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                    aria-controls="offcanvasRight"> Winkelwagen <i class="bi bi-basket2-fill hvr-grow">
+                <button class="btn btn-cart px-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight"> <div class="d-none d-xxl-inline mx-2">Cart</div>  <i class="bi bi-basket2-fill hvr-grow">
                     </i></button>
 
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
                     aria-labelledby="offcanvasRightLabel">
                     <div class="offcanvas-header pt-4 ">
-                        <h5 id="offcanvasRightLabel mx-auto">Winkelwagen</h5>
+                        <h5 id="offcanvasRightLabel">Cart</h5>
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
                     </div>

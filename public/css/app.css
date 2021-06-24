@@ -10856,6 +10856,7 @@ body {
   min-height: 100vh;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
+  font-size: 1rem;
   background-color: #c6dcee;
   background: linear-gradient(to left bottom, #c6dcee, #c8bfdd);
   background-repeat: no-repeat;
@@ -10938,12 +10939,12 @@ nav {
 }
 
 .btn-cart {
+  font-size: 1.2rem;
   background-color: #539eff;
   color: white;
   border-style: none;
   border-radius: 10px;
   box-shadow: 0px 0px 20px rgba(83, 157, 255, 0.582);
-  padding: 0.75rem;
 }
 
 .btn-cart:hover {

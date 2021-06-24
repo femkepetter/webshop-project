@@ -4,7 +4,7 @@
 
 
 <div class="row px-5 gx-5">
-    <div class="col-8">
+    <div class="col-xl-8">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -37,33 +37,47 @@
             </button>
         </div>
     </div>
-    <div class="col-4">
+    <div class="col-xl-4">
         <h1>{{ $product->name }}.</h1>
         <h3>${{ $product->price }}</h3>
         <h3>In stock: Yes</h3>
         <p>
             {{ $product->description }}
         </p>
+
+        <div class="text-center divider">
+            <button type="button" class="btn btn-cart py-2 px-4 cart-button" id="liveToastBtn"
+                product_id="{{ $product->id }}">
+                <i class="bi bi-bag-plus-fill "></i> Add to cart.
+            </button>
+
+        </div>
+        <a href="{{ route('category.show', $product->category) }}">
+            {{ $product->category->name }}</p></a>
+
     </div>
 </div>
 
-<div class="text-center divider">
-    <button type="button" route="{{route('product.cart', $product->id)}}" class="btn btn-cart py-2 px-4 cart-button" id="liveToastBtn" onclick="addToCart()">
-        <h2 class="hvr-grow pt-2"><i class="bi bi-bag-plus-fill "></i> Add to cart.</h2>
-    </button>
-    {{-- <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
-        <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <img src="..." class="rounded me-2" alt="...">
-                <strong class="me-auto">Bootstrap</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                Added product to cart 1
+
+
+
+<!-- <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1>{{ $product->name }}</h1>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <img src="https://picsum.photos/300" alt="placeholder">
+                        <p>{{ $product->price }}</p>
+                        <p>{{ $product->description }}</p>
+                        <button class="cart-button" type="button" class="btn btn-success" product_id="{{ $product->id }}">Add to cart</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div> --}}
-</div>
+    </div>
+</div> -->
 @endsection
 
 @push('child-script')

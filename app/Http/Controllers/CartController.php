@@ -14,21 +14,19 @@ class CartController extends Controller
         $cart = session('cart');
         $cartArray = [];
 
+        $product = Product::findOrFail($cart['product_id']);
+
         if ($cart != null) {
-            foreach ($cart as $item) {
-                foreach ($item as $id) {
-                    $cartArray[] = Product::findOrFail($cart['product_id']);
-                };
-            };
+            session()->put('cart', $cartArray);
+        } else {
+            session()->push('cart', $cartArray);
         }
 
-        //$product = Product::findOrFail($cart['product_id']);
-        //$product['name'];
-        dd($cartArray);
+        dd($cart);
 
-        return view('cart.show', [
-            'cart' => $cart,
-        ]);
+        // return view('cart.show', [
+        //     'cart' => $cart,
+        // ]);
     }
 
     public function store(Request $request, Product $product)

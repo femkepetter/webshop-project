@@ -47,19 +47,6 @@
                 <div class="col-sm-12 col-md-3 col-lg-3 text-center">
                     <button type="button" class="btn btn-cart " id="${{ $product->id }}"><i
                             class="bi bi-bag-plus-fill hvr-grow"></i></button>
-
-                    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
-                        <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-                            <div class="toast-header">
-                                <img src="..." class="rounded me-2" alt="...">
-                                <strong class="me-auto">Bootstrap</strong>
-                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                            </div>
-                            <div class="toast-body">
-                                Added product to cart
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
     </div>

@@ -51,7 +51,8 @@
         </div>
 
         <div class="text-center divider">
-            <button type="button" class="btn btn-cart py-2 px-4 cart-button" id="liveToastBtn" product_id="{{ $product->id }}">
+            <button type="button" class="btn btn-cart py-2 px-4 cart-button" id="liveToastBtn"
+                product_id="{{ $product->id }}">
                 <h2 class="hvr-grow pt-2"><i class="bi bi-bag-plus-fill "></i> Add to cart.</h2>
             </button>
             <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
@@ -98,8 +99,8 @@
 
 @push('child-script')
 <script>
-    $(document).ready(function() {
-        $('.cart-button').on('click', function() {
+    $(document).ready(function () {
+        $('.cart-button').on('click', function () {
             //console.log($(this).attr('product_id'));
             axios({
                 url: '{{ Route("cart.store") }}',
@@ -107,11 +108,11 @@
                 data: {
                     product_id: $(this).attr('product_id'),
                 }
-            }).then(function(response) {
+            }).then(function (response) {
                 if (response.data.success === true) {
                     console.log(response.data)
                 }
-            }).catch(function(response) {
+            }).catch(function (response) {
                 console.log(response.data.message)
             })
         })

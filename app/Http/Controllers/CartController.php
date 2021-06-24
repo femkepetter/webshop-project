@@ -9,20 +9,31 @@ use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
-    public function show(Request $request)
+    public function show(Request $request, Product $product)
     {
         $cart = session('cart');
-        dd($cart);
+        $cartArray = [];
+
+        if ($cart != null) {
+            foreach ($cart as $item) {
+                foreach ($item as $id) {
+                    $cartArray[] = Product::findOrFail($cart['product_id']);
+                };
+            };
+        }
+
+        //$product = Product::findOrFail($cart['product_id']);
+        //$product['name'];
+        dd($cartArray);
 
         return view('cart.show', [
-            'cart' => $cart
+            'cart' => $cart,
         ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Product $product)
     {
         Session::put('cart', $request->all());
-        //$product = Product::findOrFail($request->product_id);
     }
 
     public function edit(Cart $cart)

@@ -47,10 +47,6 @@
 
         <div class="text-center divider">
             <p class="btn-holder"><a href="{{ route('add.to.cart', $product->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
-            {{-- <button type="button" class="btn btn-cart py-2 px-4 cart-button" id="liveToastBtn" route="{{route('product.cart', $product->id)}}" onclick="addToCart()">
-                <i class="bi bi-bag-plus-fill "></i> Add to cart.
-            </button> --}}
-
         </div>
         <a href="{{ route('category.show', $product->category) }}">
             {{ $product->category->name }}</p></a>
@@ -58,27 +54,3 @@
     </div>
 </div>
 @endsection
-
-@push('child-script')
-{{-- <script>
-            function addToCart(){
-                let product = {!! json_encode($product) !!};
-                let cartButton = document.getElementById('liveToastBtn');
-                axios({
-                    url: cartButton.getAttribute('route'),
-                    method: 'PUT',
-                    data: {
-                        product: product
-                    }
-                }).then(function(response) {
-                    if (response.data.succes === true) {
-                        console.log('yay!');
-                    } else {
-                        console.log('this doesnt work');
-                    }
-                }).catch(function(response) {
-                    alert(response.data.message)
-                })
-            }
-</script> --}}
-@endpush

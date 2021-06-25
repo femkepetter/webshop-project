@@ -30,7 +30,7 @@
                         <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart" />
                     </td>
                     <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
-                    <td class="actions" data-th="">
+                    <td class="actions">
                         <button class="btn btn-danger btn-sm remove-from-cart">Delete</button>
                     </td>
                 </tr>

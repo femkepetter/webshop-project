@@ -66,15 +66,6 @@
             </section>
         </main>
 
-        <!-- <div class="container-fluid">
-
-            @include('layouts.components.navbar')
-
-            <main class="py-4">
-                @yield('content')
-            </main>
-        </div> -->
-
     </div>
     <!-- Scripts -->
 
@@ -94,12 +85,9 @@
             interval: 2000,
             wrap: false
         })
-
     </script>
 
-    
 
-</html>
 </body>
 
 </html>

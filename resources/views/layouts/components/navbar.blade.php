@@ -37,7 +37,15 @@
                 </form>
                 <button class="btn btn-cart px-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                     aria-controls="offcanvasRight"> <div class="d-none d-xxl-inline mx-2">Cart</div>  <i class="bi bi-basket2-fill hvr-grow">
-                    </i></button>
+                    </i><span class="badge badge-pill badge-danger">
+                        @php $total = 0 @endphp
+                        @if(session('cart'))
+                        @foreach(session('cart') as $id => $details)
+                            @php $itemCount = $total += $details['quantity'] @endphp
+                        @endforeach
+                        @endif
+                        {{ $itemCount }}
+                        </span></button>
 
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
                     aria-labelledby="offcanvasRightLabel">
@@ -47,14 +55,52 @@
                             aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-                        <hr>
-                        product quantity price
-                        <hr>
-                        total price
-                        <hr>
-                        go to cart
+                        <div class="col-lg-6 col-sm-6 col-6">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger"> @php $total = 0 @endphp
+                                @if(session('cart'))
+                                @foreach(session('cart') as $id => $details)
+                                    @php $itemCount = $total += $details['quantity'] @endphp
+                                @endforeach
+                                @endif
+                                {{ $itemCount }}</span>
+                        </div>
+                        
+                        @if(session('cart'))
+                        @foreach(session('cart') as $id => $details)
+                            <div class="row cart-detail">
+                                <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
+                                    <span class="count">{{ $details['quantity'] }}x</span>
+                                    <span>{{ $details['name'] }}</span>
+                                    <span class="price text-info"> ${{ $details['price'] }}</span> 
+                                </div>
+                            </div>
+                        @endforeach
+                        @endif
+
+                        {{-- TOTAL --}}
+                        @php $total = 0 @endphp
+                        @foreach((array) session('cart') as $id => $details)
+                            @php $total += $details['price'] * $details['quantity'] @endphp
+                        @endforeach
+                        <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
+                            <p>Total: <span class="text-info">$ {{ $total }}</span></p>
+                        </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
+                            <a href="{{ route('cart.show') }}" class="btn btn-primary btn-block">Go to cart</a>
+                        </div>
+                    </div>
+                    </div>
+                    
                     </div>
                 </div>
             </div>
         </div>
     </nav>
+    {{-- OPTIONEEL MAAR DAN MISSCHIEN BRENGT HET JE OP IDEEEN? --}}
+    @if(session('success'))
+    <div class="alert alert-success">
+      {{ session('success') }}
+    </div> 
+    @endif
+

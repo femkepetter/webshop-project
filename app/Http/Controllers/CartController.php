@@ -11,120 +11,65 @@ use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
-    //
-    public function addToCart(Request $request, Product $product)
+    public function show()
     {
+        return view('cart.show');
+    }
 
-        try {
-            $request->validate([
-                'product' => 'required'
-            ]);
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    public function addToCart(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
 
-            //$request->session()->flush();
-            $request->session()->push('cart', [$product->id => 1]);
+        $cart = session()->get('cart', []);
+        //$request->session()->flush();
+        if (isset($cart[$id])) {
+            $cart[$id]['quantity']++;
+        } else {
+            $cart[$id] = [
+                "name" => $product->name,
+                "quantity" => 1,
+                "price" => $product->price,
+            ];
+        }
 
-            return response()->json([
-                'succes' => true
-            ]);
-        } catch (Exception $e) {
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
+    }
 
-            return response()->json([
-                'succes' => false,
-                'request' => $request->item,
-                'message' => $e->getMessage()
-            ]);
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    public function update(Request $request)
+    {
+        if ($request->id && $request->quantity) {
+            $cart = session()->get('cart');
+            $cart[$request->id]["quantity"] = $request->quantity;
+            session()->put('cart', $cart);
+            session()->flash('success', 'Cart updated successfully');
         }
     }
 
-    public function show(Request $request)
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    public function remove(Request $request)
     {
-        $cart = session('cart');
-        $cartArray = [];;
-        $testItems = Product::all();
-        if ($cart != null) {
-            foreach ($cart as $item) {
-                foreach ($item as $id => $amount) {
-                    //     if (isset($id)) {
-                    //         $testItem = $testItems->find($id);
-                    //         $testItem->quantity = $amount;
-                    //         $amount++;
-                    //         dd($amount);
-                    //     } else {
-                    $testItem = $testItems->find($id);
-                    $testItem->quantity = $amount;
-                    //dd($testItem);
-                    $cartArray[] = $testItem;
-                    //};
-                };
+        if ($request->id) {
+            $cart = session()->get('cart');
+            if (isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart', $cart);
             }
+            session()->flash('success', 'Product removed successfully');
         }
-        return view('cart.show', [
-            'cartArray' => $cartArray
-        ]);
-    }
-
-    public function delete(Request $request, $index)
-    {
-        $cartItem = $request->session()->get('cart');
-        $i = 0;
-        $request->session()->forget('cart');
-        foreach ($cartItem as $itemDelete) {
-            if ($i != $index) {
-                $request->session()->push('cart', $itemDelete);
-            }
-            $i++;
-        }
-        return redirect(route('cart.show'));
     }
 }
-
-//     public function add(Request $request, $index)
-//     {
-
-//         try {
-//             $tempValue = $request->session()->get('cart.' . $index);
-//             foreach ($tempValue as $key => $value) {
-//                 $tempValue[$key] += 1;
-//             }
-//             $request->session()->put('cart.' . $index, $tempValue);
-
-//             return response()->json([
-//                 'succes' => true,
-//                 'test' => $request->session()->get('cart.' . $index),
-//                 'redirect' => route('cart.show')
-//             ]);
-//         } catch (Exception $e) {
-
-//             return response()->json([
-//                 'succes' => false,
-//                 'request' => $request->item,
-//                 'message' => $e->getMessage()
-//             ]);
-//         }
-//     }
-
-//     public function sub(Request $request, $index)
-//     {
-
-//         try {
-//             $tempValue = $request->session()->get('cart.' . $index);
-//             foreach ($tempValue as $key => $value) {
-//                 $tempValue[$key] -= 1;
-//             }
-//             $request->session()->put('cart.' . $index, $tempValue);
-
-//             return response()->json([
-//                 'succes' => true,
-//                 'test' => $request->session()->get('cart.' . $index),
-//                 'redirect' => route('cart.show')
-//             ]);
-//         } catch (Exception $e) {
-
-//             return response()->json([
-//                 'succes' => false,
-//                 'request' => $request->item,
-//                 'message' => $e->getMessage()
-//             ]);
-//         }
-//     }
-// }

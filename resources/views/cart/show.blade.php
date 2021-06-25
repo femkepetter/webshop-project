@@ -1,58 +1,97 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="container">
-        <div class="row">
-            <div class="col-12 pt-2">
-                 <div class="row">
-                    <div class="col-8">
-
-                        <?php $totalPrice = 0; $index = 0; ?>
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <td>ID</td>
-                                <td>Name</td>
-                                <td>Price</td>
-                                <td id="amount{{$index}}">Quantity</td>
-                                <td>Delete</td>
-                            </tr>
-                        </thead>
-                        @if( $cartArray !== null )
-                            @foreach( $cartArray as $product)
-                            <tbody>
-                                    <tr>
-                                    <td>{{$product->id}}</td>
-                                    <td>{{$product->name}}</td>
-                                    <td>{{$product->price}}</td>
-                                    <td><button id="sub{{$index}}" class="btn btn-secondary btn-sm" onclick="subOne({{$index}})" route="{{route('cart.sub', $index)}}"> - 1</button>
-                                        {{$product->quantity}}
-                                        <button id="add{{$index}}" class="btn btn-secondary btn-sm" onclick="addOne({{$index}})" route="{{route('cart.add', $index)}}"> + 1 </button>
-                                        </td>
-                                    
-                                <form id="delete-frm" action="{{route('cart.delete', $index)}}" method="POST">
-                                    @method('DELETE')
-                                    @csrf
-                                    <td><button class="btn btn-danger">Delete</button></td>
-                                </form>
-                                <?php $totalPrice += ($product->price * $product->quantity); ?>
-                            <?php $index++; ?>
-                            @endforeach
-                            @endif
-                            <tfoot>
-                                <tr>
-                                    <td></td>
-                                    <td>Total</td>
-                                    <td>€<?= $totalPrice; ?>,-</td>
-                                </tr>
-                        </tbody>
-                    </table> 
-                            @if ( $cartArray == null )
-                            <p>Your cart is empty!</p>
-                            @endif
-                    </div>         
-                </div>       
-            </div>
-        </div>
-    </div>
+<table id="cart" class="table table-hover table-condensed">
+    <thead>
+        <tr>
+            <th style="width:50%">Product</th>
+            <th style="width:10%">Price</th>
+            <th style="width:8%">Quantity</th>
+            <th style="width:22%" class="text-center">Subtotal</th>
+            <th style="width:10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @php $total = 0 @endphp
+        @if(session('cart'))
+            @foreach(session('cart') as $id => $details)
+                @php $total += $details['price'] * $details['quantity'] @endphp
+                <tr data-id="{{ $id }}">
+                    <td data-th="Product">
+                        <div class="row">
+                            {{-- <div class="col-sm-3 hidden-xs"><img src="{{ $details['image'] }}" width="100" height="100" class="img-responsive"/></div> --}}
+                            <div class="col-sm-9">
+                                <h4 class="nomargin">{{ $details['name'] }}</h4>
+                            </div>
+                        </div>
+                    </td>
+                    <td data-th="Price">${{ $details['price'] }}</td>
+                    <td data-th="Quantity">
+                        <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart" />
+                    </td>
+                    <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
+                    <td class="actions" data-th="">
+                        <button class="btn btn-danger btn-sm remove-from-cart"><i class="fa fa-trash-o"></i></button>
+                    </td>
+                </tr>
+            @endforeach
+        @endif
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="5" class="text-right"><h3><strong>Total ${{ $total }}</strong></h3></td>
+        </tr>
+        <tr>
+            <td colspan="5" class="text-right">
+                <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+                <button class="btn btn-success">Checkout</button>
+            </td>
+        </tr>
+    </tfoot>
+</table>
 @endsection
+
+@push('child-script')
+<script type="text/javascript">
+  
+    $(".update-cart").change(function (e) {
+        e.preventDefault();
+  
+        var ele = $(this);
+  
+        $.ajax({
+            url: '{{ route('update.cart') }}',
+            method: "patch",
+            data: {
+                _token: '{{ csrf_token() }}', 
+                id: ele.parents("tr").attr("data-id"), 
+                quantity: ele.parents("tr").find(".quantity").val()
+            },
+            success: function (response) {
+               window.location.reload();
+            }
+        });
+    });
+  
+    $(".remove-from-cart").click(function (e) {
+        e.preventDefault();
+  
+        var ele = $(this);
+  
+        if(confirm("Are you sure want to remove?")) {
+            $.ajax({
+                url: '{{ route('remove.from.cart') }}',
+                method: "DELETE",
+                data: {
+                    _token: '{{ csrf_token() }}', 
+                    id: ele.parents("tr").attr("data-id")
+                },
+                success: function (response) {
+                    window.location.reload();
+                }
+            });
+        }
+    });
+  
+</script>
+@endpush

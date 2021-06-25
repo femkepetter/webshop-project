@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Product;
 use Exception;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
@@ -15,7 +16,7 @@ class CartController extends Controller
     {
 
         try {
-            $validated = $request->validate([
+            $request->validate([
                 'product' => 'required'
             ]);
 
@@ -38,40 +39,44 @@ class CartController extends Controller
     public function show(Request $request)
     {
         $cart = session('cart');
-
         $cartArray = [];;
         $testItems = Product::all();
         if ($cart != null) {
             foreach ($cart as $item) {
                 foreach ($item as $id => $amount) {
-                    //$testItem = Item::where('id', $id)->get()
+                    //     if (isset($id)) {
+                    //         $testItem = $testItems->find($id);
+                    //         $testItem->quantity = $amount;
+                    //         $amount++;
+                    //         dd($amount);
+                    //     } else {
                     $testItem = $testItems->find($id);
                     $testItem->quantity = $amount;
                     //dd($testItem);
                     $cartArray[] = $testItem;
+                    //};
                 };
-            };
+            }
         }
-
         return view('cart.show', [
             'cartArray' => $cartArray
         ]);
     }
-}
 
-//     public function delete(Request $request, $index)
-//     {
-//         $tempArray = $request->session()->get('cart');
-//         $i = 0;
-//         $request->session()->forget('cart');
-//         foreach ($tempArray as $subArray) {
-//             if ($i != $index) {
-//                 $request->session()->push('cart', $subArray);
-//             }
-//             $i++;
-//         }
-//         return redirect(route('cart.show'));
-//     }
+    public function delete(Request $request, $index)
+    {
+        $cartItem = $request->session()->get('cart');
+        $i = 0;
+        $request->session()->forget('cart');
+        foreach ($cartItem as $itemDelete) {
+            if ($i != $index) {
+                $request->session()->push('cart', $itemDelete);
+            }
+            $i++;
+        }
+        return redirect(route('cart.show'));
+    }
+}
 
 //     public function add(Request $request, $index)
 //     {

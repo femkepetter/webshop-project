@@ -25,6 +25,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <!-- JAVASCRIPT -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
     <!-- JQUERY -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -85,13 +88,7 @@
     </div>
 
 
-    <script>
-        // $(document).ready(function () {
-        //     document.getElementById("{{ $product->id }}").onclick = function () {
-        //         $('.toast').toast('show');
-        //     }
-        // })
-
+    <script>            
         var myCarousel = document.querySelector('#myCarousel')
         var carousel = new bootstrap.Carousel(myCarousel, {
             interval: 2000,
@@ -100,7 +97,7 @@
 
     </script>
 
-    <script src="{{ asset('js/app.js') }}"></script>
+    
 
 </html>
 </body>

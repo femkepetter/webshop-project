@@ -27,6 +27,6 @@ Route::resource('/category', 'App\Http\Controllers\CategoryController');
 // S H O P P I N G C A R T
 Route::put('/addtocart/{product}', [\App\Http\Controllers\CartController::class, 'addToCart'])->name('product.cart');
 Route::get('/cart', [\App\Http\Controllers\CartController::class, 'show'])->name('cart.show');
-// Route::delete('/cart/{index}', [\App\Http\Controllers\CartController::class, 'delete'])->name('cart.delete');
-// Route::put('/addcart/{index}', [\App\Http\Controllers\CartController::class, 'add'])->name('cart.add');
-// Route::put('/subcart/{index}', [\App\Http\Controllers\CartController::class, 'sub'])->name('cart.sub');
+Route::delete('/cart/{index}', [\App\Http\Controllers\CartController::class, 'delete'])->name('cart.delete');
+Route::put('/addcart/{index}', [\App\Http\Controllers\CartController::class, 'add'])->name('cart.add');
+Route::put('/subcart/{index}', [\App\Http\Controllers\CartController::class, 'sub'])->name('cart.sub');

@@ -38,9 +38,9 @@
                 </form>
                 <button class="btn btn-cart mx-1"><i class="bi bi-person-fill hvr-grow"></i></button>
                 <a href="{{ route('cart.show') }}" class="btn btn-cart d-xxl-none"><i class="bi bi-basket2-fill hvr-grow"></i></a>
-                <button class="btn btn-cart d-none d-xxl-inline px-3 mx-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                <button class="btn btn-cart d-none d-xxl-inline px-3 mx-1 text-nowrap" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                     aria-controls="offcanvasRight"><i class="bi bi-basket2-fill hvr-grow">
-                    <span class="badge badge-pill badge-danger">
+                    <div class="badge">
                         @php $total = 0 @endphp
                         @if(session('cart'))
                         @foreach(session('cart') as $id => $details)
@@ -48,7 +48,7 @@
                         @endforeach
                         @endif
                         {{ $itemCount ?? '' }}
-                        </span></i></button>
+                    </div></i></button>
 
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
                     aria-labelledby="offcanvasRightLabel">

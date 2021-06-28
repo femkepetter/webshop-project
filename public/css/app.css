@@ -10940,6 +10940,7 @@ nav {
 }
 
 .btn-cart {
+  display: block;
   font-size: 1.2rem;
   background-color: #539eff;
   color: white;

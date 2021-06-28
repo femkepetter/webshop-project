@@ -25,9 +25,6 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <!-- JAVASCRIPT -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- JQUERY -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -39,7 +36,7 @@
 
         <main class="container-fluid">
             @include('layouts.components.navbar')
-            <section class="glass justify-content-center mx-auto shadow px-5 py-4">
+            <section class="glass justify-content-center mx-auto shadow">
 
 
                 <div class="row px-5 gx-5 mb-5">
@@ -66,6 +63,8 @@
             </section>
         </main>
 
+
+
     </div>
     <!-- Scripts -->
 
@@ -79,15 +78,18 @@
     </div>
 
 
-    <script>            
+    <script>
         var myCarousel = document.querySelector('#myCarousel')
         var carousel = new bootstrap.Carousel(myCarousel, {
             interval: 2000,
             wrap: false
         })
+
     </script>
 
+    </script>
 
+</html>
 </body>
 
 </html>

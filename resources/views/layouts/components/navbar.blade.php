@@ -31,12 +31,15 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex mx-auto">
-                    <input class="form-control d-none d-xxl-flex" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-cart mx-2" type="submit"><i class="bi bi-search hvr-grow"></i></button>
+
+                <form class="d-flex">
+                    <input class="form-control d-none d-xxl-flex mx-1" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-cart mx-1" type="submit"><i class="bi bi-search hvr-grow"></i></button>
                 </form>
-                <button class="btn btn-cart px-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                    aria-controls="offcanvasRight"> <div class="d-none d-xxl-inline mx-2">Cart</div>  <i class="bi bi-basket2-fill hvr-grow">
+                <button class="btn btn-cart mx-1"><i class="bi bi-person-fill hvr-grow"></i></button>
+                <a href="{{ route('cart.show') }}" class="btn btn-cart d-xxl-none"><i class="bi bi-basket2-fill hvr-grow"></i></a>
+                <button class="btn btn-cart d-none d-xxl-inline px-3 mx-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight"><i class="bi bi-basket2-fill hvr-grow">
                     <span class="badge badge-pill badge-danger">
                         @php $total = 0 @endphp
                         @if(session('cart'))
@@ -87,7 +90,7 @@
                         </div>
                     <div class="row">
                         <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
-                            <a href="{{ route('cart.show') }}" class="btn btn-primary btn-block">Go to cart</a>
+                            <a href="{{ route('cart.show') }}" class="btn btn-cart">Go to cart</a>
                         </div>
                     </div>
                     </div>

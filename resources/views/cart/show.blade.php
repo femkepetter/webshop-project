@@ -31,7 +31,7 @@
                     </td>
                     <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
                     <td class="actions">
-                        <button class="btn btn-danger btn-sm remove-from-cart">Delete</button>
+                        <button class="btn btn-cart btn-sm remove-from-cart">Delete</button>
                     </td>
                 </tr>
             @endforeach
@@ -43,8 +43,8 @@
         </tr>
         <tr>
             <td colspan="5" class="text-right">
-                <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
-                <button class="btn btn-success">Checkout</button>
+                <a href="{{ url('/') }}" class="btn btn-cart"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+                <button class="btn btn-cart">Checkout</button>
             </td>
         </tr>
     </tfoot>

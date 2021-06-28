@@ -46,38 +46,14 @@
         </p>
 
         <div class="text-center divider">
-            <button type="button" class="btn btn-cart py-2 px-4 cart-button" id="liveToastBtn"
-                product_id="{{ $product->id }}">
-                <i class="bi bi-bag-plus-fill "></i> Add to cart.
-            </button>
-
+            <p class="btn-holder"><a href="{{ route('add.to.cart', $product->id) }}"
+                    class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
         </div>
         <a href="{{ route('category.show', $product->category) }}">
             {{ $product->category->name }}</p></a>
 
     </div>
 </div>
-
-
-
-
-<!-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <h1>{{ $product->name }}</h1>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col">
-                        <img src="https://picsum.photos/300" alt="placeholder">
-                        <p>{{ $product->price }}</p>
-                        <p>{{ $product->description }}</p>
-                        <button class="cart-button" type="button" class="btn btn-success" product_id="{{ $product->id }}">Add to cart</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 @endsection
 
 

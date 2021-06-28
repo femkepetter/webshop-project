@@ -13,6 +13,7 @@
     <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
+
     <!-- ANIMATIONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
@@ -25,6 +26,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <!-- JAVASCRIPT -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
     <!-- JQUERY -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -34,9 +38,9 @@
     <div id="app">
 
 
-        <main class="container-fluid">
+        <main>
             @include('layouts.components.navbar')
-            <section class="glass justify-content-center mx-auto shadow">
+            <section class="glass justify-content-center mx-auto shadow px-5 py-4">
 
 
                 <div class="row px-5 gx-5 mb-5">
@@ -45,6 +49,20 @@
 
                 </div>
 
+                @if(session('success'))
+
+                <div class="btn-cart toast position-fixed bottom-0 end-0 p-3 text-white border-0 my-2 mx-2"
+                    style="z-index: 11" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            Your cart has been updated.
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                            aria-label="Close"></button>
+                    </div>
+                </div>
+
+                @endif
 
                 <div class="row mx-auto mt-5">
                     <div class="col-12 d-flex justify-content-center mt-5 ">
@@ -63,6 +81,32 @@
             </section>
         </main>
 
+
+
+        <script>
+            $(document).ready(function () {
+                $(".toast").toast('show');
+            });
+
+        </script>
+
+
+        <!-- ALERT -->
+        <!-- @if(session('success'))
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+
+        <script>
+            var alertList = document.querySelectorAll('.alert')
+            alertList.forEach(function (alert) {
+                new bootstrap.Alert(alert)
+            })
+
+        </script> -->
+        <!-- ALERT -->
 
 
     </div>
@@ -87,9 +131,7 @@
 
     </script>
 
-    </script>
 
-</html>
 </body>
 
 </html>

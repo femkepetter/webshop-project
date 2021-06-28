@@ -37,7 +37,7 @@
                 </form>
                 <button class="btn btn-cart px-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                     aria-controls="offcanvasRight"> <div class="d-none d-xxl-inline mx-2">Cart</div>  <i class="bi bi-basket2-fill hvr-grow">
-                    </i><span class="badge badge-pill badge-danger">
+                    <span class="badge badge-pill badge-danger">
                         @php $total = 0 @endphp
                         @if(session('cart'))
                         @foreach(session('cart') as $id => $details)
@@ -45,7 +45,7 @@
                         @endforeach
                         @endif
                         {{ $itemCount ?? '' }}
-                        </span></button>
+                        </span></i></button>
 
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
                     aria-labelledby="offcanvasRightLabel">
@@ -98,9 +98,5 @@
         </div>
     </nav>
     {{-- OPTIONEEL MAAR DAN MISSCHIEN BRENGT HET JE OP IDEEEN? --}}
-    @if(session('success'))
-    <div class="alert alert-success">
-      {{ session('success') }}
-    </div> 
-    @endif
 
+    

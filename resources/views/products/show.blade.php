@@ -44,13 +44,17 @@
         <p>
             {{ $product->description }}
         </p>
+        <h3>
+            <p>See more by: <a href="{{ route('category.show', $product->category) }}">
+                    {{ $product->category->name }}</a></p>
+        </h3>
 
         <div class="text-center divider">
             <p class="btn-holder"><a href="{{ route('add.to.cart', $product->id) }}"
-                    class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
+                    class="btn btn-cart btn-block text-center" role="button">Add to cart</a> </p>
         </div>
-        <a href="{{ route('category.show', $product->category) }}">
-            {{ $product->category->name }}</p></a>
+
+
 
     </div>
 </div>

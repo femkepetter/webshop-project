@@ -44,7 +44,7 @@
                             @php $itemCount = $total += $details['quantity'] @endphp
                         @endforeach
                         @endif
-                        {{ $itemCount }}
+                        {{ $itemCount ?? '' }}
                         </span></button>
 
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
@@ -62,7 +62,7 @@
                                     @php $itemCount = $total += $details['quantity'] @endphp
                                 @endforeach
                                 @endif
-                                {{ $itemCount }}</span>
+                                {{ $itemCount ?? '' }}</span>
                         </div>
                         
                         @if(session('cart'))

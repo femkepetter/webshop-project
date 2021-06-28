@@ -10940,6 +10940,7 @@ nav {
 }
 
 .btn-cart {
+  display: block;
   font-size: 1.2rem;
   background-color: #539eff;
   color: white;
@@ -10959,7 +10960,8 @@ nav {
 }
 
 .bi-search,
-.bi-basket2-fill {
+.bi-basket2-fill,
+.bi-person-fill {
   font-size: 1.4rem;
   color: white;
 }

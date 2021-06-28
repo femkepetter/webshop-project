@@ -35,7 +35,7 @@
 
 @foreach ($products as $product)
 @if ($loop -> iteration < 7 )
-    <div class="col-md-6 col-xl-4">
+    <div class="col-md-6 col-xl-4 my-3">
         <img src="https://picsum.photos/320/250" alt="" class="img-fluid">
             <div class="row my-2">
                 <div class="col-sm-8 col-lg-9  my-auto mt-2">

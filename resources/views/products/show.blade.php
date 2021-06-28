@@ -64,15 +64,12 @@
 @push('child-script')
 <script>
     function addToCart() {
-        let product = {
-            !!json_encode($product) !!
-        };
         let cartButton = document.getElementById('liveToastBtn');
         axios({
             url: cartButton.getAttribute('route'),
             method: 'PUT',
             data: {
-                product: product
+                product_id: '{{ $product->id }}'
             }
         }).then(function (response) {
             if (response.data.succes === true) {

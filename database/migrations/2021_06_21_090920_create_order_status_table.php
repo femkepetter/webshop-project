@@ -15,6 +15,7 @@ class CreateOrderStatusTable extends Migration
     {
         Schema::create('order_status', function (Blueprint $table) {
             $table->id();
+            $table->enum('status', ['Payed', 'Unpayed', 'Shipped', 'Prepared for shipping', 'Cancelled']);
             $table->timestamps();
         });
     }

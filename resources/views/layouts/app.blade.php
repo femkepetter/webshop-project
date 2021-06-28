@@ -121,17 +121,6 @@
         <div class="circle-4"></div>
     </div>
 
-
-    <script>
-        var myCarousel = document.querySelector('#myCarousel')
-        var carousel = new bootstrap.Carousel(myCarousel, {
-            interval: 2000,
-            wrap: false
-        })
-
-    </script>
-
-
 </body>
 
 </html>

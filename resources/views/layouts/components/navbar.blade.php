@@ -72,13 +72,15 @@
                                 </span>
                         </div>
                         
+                    
                         @if(session('cart'))
                         @foreach(session('cart') as $id => $details)
+                        @php $totalPrice = $details['quantity'] * $details['price'] @endphp
                             <div class="row cart-detail">
                                 <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
-                                    <span class="count">{{ $details['quantity'] }}x</span>
-                                    <span>{{ $details['name'] }}</span>
-                                    <span class="price text-info"> ${{ $details['price'] }}</span> 
+                                    <span id="p_id_{{ $id }}_count" class="count">{{ $details['quantity'] ?? '' }}x</span>
+                                    <span id="p_id_{{ $id }}_name">{{ $details['name'] ?? '' }}</span>
+                                    <span id="p_id_{{ $id }}_price" class="price text-info"> ${{ $totalPrice ?? '' }}</span> 
                                 </div>
                             </div>
                         @endforeach

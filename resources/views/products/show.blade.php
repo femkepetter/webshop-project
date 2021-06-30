@@ -78,6 +78,10 @@
                 console.log($('#total-products'));
                 if (response.data.success === true) {
                     $('#total-products').html(response.data.total_count)
+                    //$(document).
+                    $('#p_id_' + '{{ $product->id }}' + '_count').html(response.data.quantity)
+                    $('#p_id_' + '{{ $product->id }}' + '_name').html(response.data.name)
+                    $('#p_id_' + '{{ $product->id }}' + '_price').html(response.data.price)
                 } else {
                     console.log('It does not work..');
                 }

@@ -26,14 +26,10 @@ Route::resource('/product', 'App\Http\Controllers\ProductController');
 Route::resource('/category', 'App\Http\Controllers\CategoryController');
 
 // S H O P P I N G C A R T
-// Route::put('/addtocart/{product}', [\App\Http\Controllers\CartController::class, 'addToCart'])->name('product.cart');
-// Route::get('/cart', [\App\Http\Controllers\CartController::class, 'show'])->name('cart.show');
-// Route::delete('/cart/{index}', [\App\Http\Controllers\CartController::class, 'delete'])->name('cart.delete');
-// Route::put('/addcart/{index}', [\App\Http\Controllers\CartController::class, 'add'])->name('cart.add');
-// Route::put('/subcart/{index}', [\App\Http\Controllers\CartController::class, 'sub'])->name('cart.sub');
-
-
 Route::get('/cart', [CartController::class, 'show'])->name('cart.show');
 Route::post('add-to-cart', [CartController::class, 'addToCart'])->name('add.to.cart');
 Route::patch('update-cart', [CartController::class, 'update'])->name('update.cart');
 Route::delete('remove-from-cart', [CartController::class, 'remove'])->name('remove.from.cart');
+
+// O R D E R S
+Route::post('/finish', [\App\Http\Controllers\OrderController::class, 'finish'])->name('order.finish');

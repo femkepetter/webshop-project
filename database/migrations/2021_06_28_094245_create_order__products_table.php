@@ -19,6 +19,8 @@ class CreateOrderProductsTable extends Migration
             $table->foreignId('order_id')->references('id')->on('orders');
             $table->decimal('price');
             $table->integer('quantity');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

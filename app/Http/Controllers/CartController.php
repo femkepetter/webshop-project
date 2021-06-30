@@ -29,6 +29,7 @@ class CartController extends Controller
             $product = Product::findOrFail($request->product_id);
 
             $cart = session()->get('cart', []);
+            $isNew = false;
 
             if (isset($cart[$request->product_id])) {
                 $cart[$request->product_id]['quantity']++;
@@ -37,7 +38,9 @@ class CartController extends Controller
                     "name" => $product->name,
                     "quantity" => 1,
                     "price" => $product->price,
+                    "id"    => $product->id,
                 ];
+                $isNew = true;
             }
 
             session()->put('cart', $cart);
@@ -46,7 +49,11 @@ class CartController extends Controller
                 'success'       => true,
                 'message'       => 'Product toegevoegd',
                 'quantity'      => $cart[$request->product_id]['quantity'],
-                'total_count'   => $this->cartCounter()
+                'total_count'   => $this->cartCounter(),
+                'name'          => $cart[$request->product_id]['name'],
+                'price'         => $cart[$request->product_id]['price'],
+                'id'            => $cart[$request->product_id]['id'],
+                'is_new'        => $isNew
             ]);
         } catch (Exception $e) {
             return response()->json([
@@ -62,9 +69,14 @@ class CartController extends Controller
 
         $cart = session()->get('cart');
 
+        if (is_null($cart)) {
+            return 0;
+        }
+
         foreach ($cart as $item) {
             $counter += $item['quantity'];
         }
+
         return $counter;
     }
 

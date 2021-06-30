@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
+
 <table id="cart" class="table table-hover table-condensed">
     <thead>
         <tr>
@@ -44,7 +45,11 @@
         <tr>
             <td colspan="5" class="text-right">
                 <a href="{{ url('/') }}" class="btn btn-cart"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+                
+                <form action="{{route('order.finish')}}" method="POST">
+                @csrf
                 <button class="btn btn-cart">Checkout</button>
+            </form>
             </td>
         </tr>
     </tfoot>

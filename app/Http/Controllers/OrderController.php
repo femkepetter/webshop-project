@@ -4,49 +4,51 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Order_Product;
+use App\Models\Product;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
 {
-    public function NewOrder(Request $request, $id)
+    public function finish(Request $request, Product $product)
     {
-        // $this->validate($request, [
-        //     'payment' => 'required',
-        // ]);
 
-        $cart = Session::get('cart');
-        $total = 0;
-        foreach ($cart as $data) {
-            $total_amount = $data['amount'] * $data['qty'];
-            $qty = $data['qty'];
+
+        try {
+            $cart = Session::get('cart');
+            $total_price = 0;
+            foreach ($cart as $item) {
+                $total_price += ($item['quantity'] * $item['price']);
+            }
+
+            $newOrder = new Order();
+            $newOrder->total_price = $total_price;
+            $newOrder->save();
+
+            $order_id = DB::getPdo()->lastInsertId();
+
+            foreach ($cart as $item) {
+                $orderProduct = new Order_Product();
+                $orderProduct->order_id = $order_id;
+                $orderProduct->product_id = $item['id'];
+                $orderProduct->price = $item['price'];
+                $orderProduct->quantity = $item['quantity'];
+                $orderProduct->save();
+            }
+
+            Session::forget('cart');
+
+            return response()->json([
+                'success'       => true,
+                'message'       => 'Order toegevoegd',
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'success'   => false,
+                'message'   => 'It did not work : ' . $e->getMessage(),
+            ]);
         }
-        $quantity = $qty + 0;
-
-        $new = new Order();
-        //$new->user_id = Auth::user()->id;
-        $new->note = $request['note'];
-        $new->total_quantity = $quantity;
-        $new->total_amount = $total_amount;
-        $new->status = 1;
-        $new->save();
-
-        $order_id = DB::getPdo()->lastInsertId();
-
-        foreach ($cart as $data) {
-            $total_amount = $data['amount'] * $data['qty'];
-            $qty = $data['qty'];
-            $orderProduct = new Order_Product();
-            $orderProduct->order_id = $order_id;
-            $orderProduct->product_id = $data['product_id'];
-            $orderProduct->product_name = $data['product_name'];
-            $orderProduct->product_price = $data['product_price'];
-            $orderProduct->product_quantity = $data['product_quantity'];
-            $orderProduct->save();
-        }
-
-        Session::forget('cart');
-        return redirect()->route('order.show', $id);
     }
 }

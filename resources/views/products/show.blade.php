@@ -50,8 +50,8 @@
         </h3>
 
         <div class="text-center divider">
-            <p class="btn-holder"><a href="{{ route('add.to.cart', $product->id) }}"
-                    class="btn btn-cart btn-block text-center" role="button">Add to cart</a> </p>
+            <p class="btn-holder">
+                <button id="cartButton" class="btn btn-cart btn-block text-center add-to-cart" role="button" onclick="addToCart()">Add to cart</button></p>
         </div>
 
 
@@ -63,24 +63,45 @@
 
 @push('child-script')
 <script>
-    function addToCart() {
-        let cartButton = document.getElementById('liveToastBtn');
+ function addToCart(){
+
+        let cartButton = document.getElementById('cartButton');
+      
+
         axios({
-            url: cartButton.getAttribute('route'),
-            method: 'PUT',
+            url: "{{ route('add.to.cart') }}",
+            method: "POST",
             data: {
                 product_id: '{{ $product->id }}'
             }
-        }).then(function (response) {
-            if (response.data.succes === true) {
-                console.log('yay!');
-            } else {
-                console.log('this doesnt work');
-            }
-        }).catch(function (response) {
-            alert(response.data.message)
-        })
-    }
-
+            }).then(function (response) {
+                console.log($('#total-products'));
+                if (response.data.success === true) {
+                    $('#total-products').html(response.data.total_count)
+                } else {
+                    console.log('It does not work..');
+                }
+            }).catch(function (response) {
+                alert(response.data.message)
+            })
+        }
 </script>
 @endpush
+
+{{-- $(".add-to-cart").click(function (e) {
+    e.preventDefault();
+
+    let productId = $(this).attr('data-id');
+
+    $.ajax({
+        url: '{{ route('add.to.cart') }}',
+        method: "POST",
+        data: {
+            _token: '{{ csrf_token() }}',
+            id: productId, 
+        },
+        success: function (response) {
+                window.location.reload();
+        }
+});
+}); --}}

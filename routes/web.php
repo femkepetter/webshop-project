@@ -34,6 +34,6 @@ Route::resource('/category', 'App\Http\Controllers\CategoryController');
 
 
 Route::get('/cart', [CartController::class, 'show'])->name('cart.show');
-Route::get('add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add.to.cart');
+Route::post('add-to-cart', [CartController::class, 'addToCart'])->name('add.to.cart');
 Route::patch('update-cart', [CartController::class, 'update'])->name('update.cart');
 Route::delete('remove-from-cart', [CartController::class, 'remove'])->name('remove.from.cart');

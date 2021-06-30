@@ -44,9 +44,9 @@
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg-3 text-center">
-                    <a href="{{ route('add.to.cart', $product->id) }}" 
-                        class="btn btn-cart" role="button"><i
-                        class="bi bi-bag-plus-fill hvr-grow"></i></a>
+                    <button data-id="{{ $product->id }}" 
+                        class="btn btn-cart add-to-cart" role="button"><i
+                        class="bi bi-bag-plus-fill hvr-grow"></i></button>
                 </div>
             </div>
     </div>
@@ -54,3 +54,25 @@
     @endif
     @endforeach
 @endsection
+
+@push('child-script')
+<script>
+ $(".add-to-cart").click(function (e) {
+        e.preventDefault();
+
+        let productId = $(this).attr('data-id');
+
+        $.ajax({
+            url: '{{ route('add.to.cart') }}',
+            method: "POST",
+            data: {
+                _token: '{{ csrf_token() }}',
+                id: productId, 
+            },
+            success: function (response) {
+                    window.location.reload();
+            }
+    });
+ });
+</script>
+@endpush

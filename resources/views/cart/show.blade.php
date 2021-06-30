@@ -57,15 +57,15 @@
     $(".update-cart").change(function (e) {
         e.preventDefault();
   
-        var ele = $(this);
+        let that = $(this);
   
         $.ajax({
             url: '{{ route('update.cart') }}',
             method: "patch",
             data: {
                 _token: '{{ csrf_token() }}', 
-                id: ele.parents("tr").attr("data-id"), 
-                quantity: ele.parents("tr").find(".quantity").val()
+                id: that.parents("tr").attr("data-id"), 
+                quantity: that.parents("tr").find(".quantity").val()
             },
             success: function (response) {
                window.location.reload();
@@ -76,7 +76,7 @@
     $(".remove-from-cart").click(function (e) {
         e.preventDefault();
   
-        var ele = $(this);
+        let that = $(this);
   
         if(confirm("Are you sure want to remove?")) {
             $.ajax({
@@ -84,7 +84,7 @@
                 method: "DELETE",
                 data: {
                     _token: '{{ csrf_token() }}', 
-                    id: ele.parents("tr").attr("data-id")
+                    id: that.parents("tr").attr("data-id")
                 },
                 success: function (response) {
                     window.location.reload();

@@ -21,24 +21,51 @@ class CartController extends Controller
      *
      * @return response()
      */
-    public function addToCart(Request $request, $id)
+    public function addToCart(Request $request)
     {
-        $product = Product::findOrFail($id);
+        try {
+            $this->cartCounter();
 
-        $cart = session()->get('cart', []);
-        //$request->session()->flush();
-        if (isset($cart[$id])) {
-            $cart[$id]['quantity']++;
-        } else {
-            $cart[$id] = [
-                "name" => $product->name,
-                "quantity" => 1,
-                "price" => $product->price,
-            ];
+            $product = Product::findOrFail($request->product_id);
+
+            $cart = session()->get('cart', []);
+
+            if (isset($cart[$request->product_id])) {
+                $cart[$request->product_id]['quantity']++;
+            } else {
+                $cart[$request->product_id] = [
+                    "name" => $product->name,
+                    "quantity" => 1,
+                    "price" => $product->price,
+                ];
+            }
+
+            session()->put('cart', $cart);
+
+            return response()->json([
+                'success'       => true,
+                'message'       => 'Product toegevoegd',
+                'quantity'      => $cart[$request->product_id]['quantity'],
+                'total_count'   => $this->cartCounter()
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'success'   => false,
+                'message'   => 'It did not work : ' . $e->getMessage(),
+            ]);
         }
+    }
 
-        session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+    private function cartCounter()
+    {
+        $counter = 0;
+
+        $cart = session()->get('cart');
+
+        foreach ($cart as $item) {
+            $counter += $item['quantity'];
+        }
+        return $counter;
     }
 
     /**

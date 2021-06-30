@@ -40,7 +40,7 @@
                 <a href="{{ route('cart.show') }}" class="btn btn-cart d-xxl-none"><i class="bi bi-basket2-fill hvr-grow"></i></a>
                 <button class="btn btn-cart d-none d-xxl-inline px-3 mx-1 text-nowrap" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                     aria-controls="offcanvasRight"><i class="bi bi-basket2-fill hvr-grow">
-                    <div class="badge">
+                    <div class="badge" id="total-products">
                         @php $total = 0 @endphp
                         @if(session('cart'))
                         @foreach(session('cart') as $id => $details)
@@ -59,13 +59,17 @@
                     </div>
                     <div class="offcanvas-body">
                         <div class="col-lg-6 col-sm-6 col-6">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger"> @php $total = 0 @endphp
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            
+                            <span class="badge badge-pill badge-danger" id="total-products"> 
+                                @php $total = 0 @endphp
                                 @if(session('cart'))
                                 @foreach(session('cart') as $id => $details)
                                     @php $itemCount = $total += $details['quantity'] @endphp
                                 @endforeach
                                 @endif
-                                {{ $itemCount ?? '' }}</span>
+                                {{ $itemCount ?? '' }}
+                                </span>
                         </div>
                         
                         @if(session('cart'))

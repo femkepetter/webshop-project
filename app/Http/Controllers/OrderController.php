@@ -28,6 +28,9 @@ class OrderController extends Controller
 
             $newOrder = new Order();
             $newOrder->total_price = $total_price;
+            $newOrder->first_name = $request->first_name;
+            $newOrder->last_name = $request->last_name;
+            $newOrder->delivery_address = $request->delivery_address;
             $newOrder->save();
 
             $order_id = DB::getPdo()->lastInsertId();

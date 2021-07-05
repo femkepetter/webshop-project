@@ -16,8 +16,9 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             //$table->foreignId('order_status_id')->references('id')->on('orders');
-            //$table->string('name');
-            //$table->string('address');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('delivery_address');
             $table->decimal('total_price');
             //$table->integer('quantity');
             //$table->integer('VAT');

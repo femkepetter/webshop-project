@@ -46,10 +46,7 @@
             <td colspan="5" class="text-right">
                 <a href="{{ url('/') }}" class="btn btn-cart"><i class="fa fa-angle-left"></i> Continue Shopping</a>
                 
-                <form action="{{route('order.finish')}}" method="POST">
-                @csrf
-                <button class="btn btn-cart">Checkout</button>
-            </form>
+                <a href="{{ url('/checkout') }}" class="btn btn-cart"><button class="btn btn-cart">Checkout</button></a>
             </td>
         </tr>
     </tfoot>

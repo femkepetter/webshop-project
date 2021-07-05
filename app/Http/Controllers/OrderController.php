@@ -12,10 +12,13 @@ use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
 {
+    public function show()
+    {
+        return view('order.show');
+    }
+
     public function finish(Request $request, Product $product)
     {
-
-
         try {
             $cart = Session::get('cart');
             $total_price = 0;
@@ -40,10 +43,7 @@ class OrderController extends Controller
 
             Session::forget('cart');
 
-            return response()->json([
-                'success'       => true,
-                'message'       => 'Order toegevoegd',
-            ]);
+            return view('order.finish');
         } catch (Exception $e) {
             return response()->json([
                 'success'   => false,

@@ -24,6 +24,7 @@ class CartController extends Controller
     public function addToCart(Request $request)
     {
         try {
+            //session()->forget('cart');
             $this->cartCounter();
 
             $product = Product::findOrFail($request->product_id);

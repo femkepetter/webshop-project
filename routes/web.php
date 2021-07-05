@@ -33,3 +33,4 @@ Route::delete('remove-from-cart', [CartController::class, 'remove'])->name('remo
 
 // O R D E R S
 Route::post('/finish', [\App\Http\Controllers\OrderController::class, 'finish'])->name('order.finish');
+Route::get('/checkout', [\App\Http\Controllers\OrderController::class, 'show'])->name('order.show');

@@ -14,8 +14,9 @@
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg-3 text-center">
-                    <button type="button" class="btn btn-cart " id="${{ $product->id }}"><i
-                            class="bi bi-bag-plus-fill hvr-grow"></i></button>
+                    <a href="{{ route('add.to.cart', $product->id) }}" 
+                        class="btn btn-cart" role="button"><i
+                        class="bi bi-bag-plus-fill hvr-grow"></i></a>
                 </div>
             </div>
     </div>

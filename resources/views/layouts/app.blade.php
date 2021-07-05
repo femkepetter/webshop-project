@@ -93,7 +93,7 @@
 
     @stack('child-script')
 
-    <div class="overflow-hidden">
+    <div class=" d-none d-xl-block overflow-hidden">
         <div class="circle-1"></div>
         <div class="circle-2"></div>
         <div class="circle-3"></div>

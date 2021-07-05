@@ -23,7 +23,7 @@
     @endforeach
 
     @else
-    <p>No products here yet!</p>
+    <p>No products here yet! </p>
     @endif
 </div>
     

@@ -47,13 +47,13 @@
                             @php $itemCount = $total += $details['quantity'] @endphp
                         @endforeach
                         @endif
-                        {{ $itemCount ?? '' }}
+                        {{ $itemCount ?? '0' }}
                     </div></i></button>
 
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
                     aria-labelledby="offcanvasRightLabel">
                     <div class="offcanvas-header pt-4 ">
-                        <h5 id="offcanvasRightLabel">Cart</h5>
+                        <h2 id="offcanvasRightLabel">Your cart.</h2>
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
                     </div>
@@ -86,14 +86,37 @@
                         @endforeach
                         @endif
 
-                        {{-- TOTAL --}}
-                        @php $total = 0 @endphp
-                        @foreach((array) session('cart') as $id => $details)
-                            @php $total += $details['price'] * $details['quantity'] @endphp
-                        @endforeach
-                        <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
-                            <p>Total: <span class="text-info">$ {{ $total }}</span></p>
-                        </div>
+                        <table id="cart" class="table table-hover table-condensed">
+    
+    <thead>
+        <tr>
+            <th style="width:28%">Product</th>
+            <th style="width:10%">Price</th>
+            <th style="width:10%">Quantity</th>
+            <th style="width:22%" class="text-end">Subtotal</th>
+ 
+        </tr>
+    </thead>
+    <tbody>
+        @php $total = 0 @endphp
+        @if(session('cart'))
+            @foreach(session('cart') as $id => $details)
+                @php $total += $details['price'] * $details['quantity'] @endphp
+                <tr data-id="{{ $id }}">
+                    <td data-th="Product">{{ $details['name'] }}</td>
+                    <td data-th="Price">${{ $details['price'] }}</td>
+                    <td data-th="Quantity" class="text-center">{{ $details['quantity'] }}x</td>
+                    <td data-th="Subtotal" class="text-end">${{ $details['price'] * $details['quantity'] }}</td>
+                </tr>
+            @endforeach
+        @endif
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="5" class="text-end"><h3><strong>Subtotal: ${{ $total }}</strong></h3></td>
+        </tr>
+    </tfoot>
+</table>
                     <div class="row">
                         <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
                             <a href="{{ route('cart.show') }}" class="btn btn-cart">Go to cart</a>
@@ -106,6 +129,6 @@
             </div>
         </div>
     </nav>
-    {{-- OPTIONEEL MAAR DAN MISSCHIEN BRENGT HET JE OP IDEEEN? --}}
+
 
     

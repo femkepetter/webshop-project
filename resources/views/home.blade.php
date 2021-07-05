@@ -53,6 +53,26 @@
 
     @endif
     @endforeach
+
+    <div class="text-center divider">
+
+        <h2>Our franchises.</h2>
+        <i class="bi bi-arrow-down-circle hvr-wobble-vertical" id="logo"></i>
+    </div>
+    
+    
+    @foreach ($category as $cat)
+    
+                
+                    <div class="col-md-6 col-xl-4 my-3 text-center">
+                        <a href="{{ route('category.show', $cat) }}" class="text-decoration-none hvr-grow">
+                            <h3 class="cat-title">{{ $cat->name }}</h3>
+                        </a>
+                    </div>
+                
+       
+    @endforeach
+
 @endsection
 
 @push('child-script')

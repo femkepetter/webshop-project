@@ -37,6 +37,7 @@
             </button>
         </div>
     </div>
+
     <div class="col-xl-4">
         <h1>{{ $product->name }}.</h1>
         <h3>${{ $product->price }}</h3>
@@ -51,14 +52,12 @@
                 {{ $product->category->name }}</a>
         </h3>
 
-        <div class="text-center divider">
-            <p class="btn-holder">
-                <button id="cartButton" class="btn btn-cart btn-block text-center add-to-cart" role="button" onclick="addToCart()">Add to cart</button></p>
-        </div>
-
+        <a role="button" class="btn btn-cart pt-2" onclick="addToCart()">
+            Add to cart <i class="bi bi-bag-plus-fill hvr-grow"></i>
+        </a>
 
     </div>
-
+   
     <div class="card mx-auto mt-5 px-4 col-11">
         ratings:
         display name
@@ -106,7 +105,7 @@
 
 
 @push('child-script')
-<script>
+<script type="text/javascript">
  function addToCart(){
 
         let cartButton = document.getElementById('cartButton');
@@ -133,5 +132,6 @@
                 alert(response.data.message)
             })
         }
+        
 </script>
 @endpush

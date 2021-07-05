@@ -43,18 +43,18 @@
         <tr>
             <td colspan="5" class="text-end"><h3><strong>Subtotal: ${{ $total }}</strong></h3></td>
         </tr>
-        <tr>
+        {{-- <tr>
             <td colspan="5" class="text-right">
                 <a href="{{ url('/') }}" class="btn btn-cart">Continue Shopping</a>
                 <a href="{{ url('/checkout') }}" class="btn btn-cart"><button class="btn btn-cart">Checkout</button></a>
             </td>
-        </tr>
+        </tr> --}}
     </tfoot>
 </table>
 
 <div class="text-center">
                 <a href="{{ url('/') }}" class="btn btn-cart"> Continue Shopping</a>
-                <button class="btn btn-cart">Checkout</button>
+                <button onclick="window.location='{{ url("/checkout") }}'" class="btn btn-cart">Checkout</button>
             <div>
 @endsection
 

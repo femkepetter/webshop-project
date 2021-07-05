@@ -10856,6 +10856,7 @@ body {
   min-height: 100vh;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
+  font-size: 1rem;
   background-color: #c6dcee;
   background: linear-gradient(to left bottom, #c6dcee, #c8bfdd);
   background-repeat: no-repeat;
@@ -10874,6 +10875,18 @@ h1, .h1 {
   margin-bottom: 1.5rem;
 }
 
+/* If the screen size is 1200px wide or more, set the font-size to 80px */
+@media (min-width: 1200px) {
+  h1, .h1 {
+    font-size: 3rem;
+  }
+}
+/* If the screen size is smaller than 1200px, set the font-size to 80px */
+@media (max-width: 1199.98px) {
+  h1, .h1 {
+    font-size: 2rem;
+  }
+}
 h3, .h3 {
   font-weight: 500;
   font-size: 1.2rem;
@@ -10890,9 +10903,10 @@ nav {
   font-family: "Montserrat", sans-serif;
   z-index: 2;
   margin-top: 5rem;
-  max-width: 70%;
+  max-width: 75%;
   padding-left: 5rem;
   padding-right: 5rem;
+  padding-top: 2rem;
 }
 
 .navbar {
@@ -10904,10 +10918,6 @@ nav {
   font-weight: 700;
   font-size: 1.7rem;
   color: #190230 !important;
-}
-
-.nav-item {
-  margin-left: 2rem;
 }
 
 .nav-link {
@@ -10938,12 +10948,12 @@ nav {
 }
 
 .btn-cart {
+  font-size: 1.2rem;
   background-color: #539eff;
   color: white;
   border-style: none;
   border-radius: 10px;
   box-shadow: 0px 0px 20px rgba(83, 157, 255, 0.582);
-  padding: 0.75rem;
 }
 
 .btn-cart:hover {
@@ -10957,7 +10967,9 @@ nav {
 }
 
 .bi-search,
-.bi-basket2-fill {
+.bi-basket2-fill,
+.bi-person-fill,
+.bi-bag-plus-fill {
   font-size: 1.4rem;
   color: white;
 }
@@ -10965,7 +10977,7 @@ nav {
 .glass {
   background-color: white;
   min-height: 80vh;
-  max-width: 70%;
+  max-width: 75%;
   z-index: 1;
   position: relative;
 }
@@ -10975,10 +10987,33 @@ nav {
   margin-bottom: 4rem;
 }
 
+.cat-title {
+  font-size: 2.2rem;
+  background: -webkit-linear-gradient(#539eff, #6dc9ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  text-shadow: 0px 0px 20px rgba(83, 157, 255, 0.582);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+
+/* If the screen size is 1200px wide or more, set the font-size to 80px */
+@media (min-width: 1200px) {
+  .cat-title {
+    font-size: 2.2rem;
+  }
+}
+/* If the screen size is smaller than 1200px, set the font-size to 80px */
+@media (max-width: 1199.98px) {
+  .cat-title {
+    font-size: 1.5rem;
+  }
+}
 .circle-1,
 .circle-2 {
   background: white;
-  background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
+  background: linear-gradient(to right bottom, rgba(177, 247, 250, 0.4), rgba(250, 170, 250, 0.2));
   height: 20rem;
   width: 20rem;
   position: absolute;
@@ -10987,7 +11022,7 @@ nav {
 }
 
 .circle-1 {
-  top: 30%;
+  bottom: 55%;
   right: 15%;
 }
 
@@ -10998,7 +11033,7 @@ nav {
 
 .circle-3 {
   background: #6127be;
-  background: linear-gradient(to right bottom, rgba(162, 106, 252, 0.1), rgba(250, 190, 255, 0.2));
+  background: linear-gradient(to right bottom, rgba(162, 106, 252, 0.2), rgba(250, 190, 255, 0.5));
   height: 30rem;
   width: 30rem;
   position: absolute;

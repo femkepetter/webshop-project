@@ -13,6 +13,7 @@
     <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
+
     <!-- ANIMATIONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
@@ -25,6 +26,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <!-- JAVASCRIPT -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
     <!-- JQUERY -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -33,46 +37,69 @@
 
     <div id="app">
 
-        <div class="container-fluid">
 
+        <main>
             @include('layouts.components.navbar')
+            <section class="glass justify-content-center mx-auto shadow px-5 py-4">
 
-            <main class="py-4">
-                @yield('content')
-            </main>
-        </div>
+
+                <div class="row px-5 gx-5 mb-5">
+
+                    @yield('content')
+
+                </div>
+
+                @if(session('success'))
+
+                <div class="btn-cart toast position-fixed bottom-0 end-0 p-3 text-white border-0 my-2 mx-2"
+                    style="z-index: 11" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            Your cart has been updated.
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                            aria-label="Close"></button>
+                    </div>
+                </div>
+
+                @endif
+
+                <div class="row mx-auto mt-5">
+                    <div class="col-12 d-flex justify-content-center mt-5 ">
+                        <h2>
+                            <i class="socialmedia bi bi-facebook"></i>
+                            <i class="socialmedia bi bi-instagram"></i>
+                            <i class="socialmedia bi bi-linkedin"></i>
+                            <i class="socialmedia bi bi-twitter"></i>
+                        </h2>
+                    </div>
+                    <div class="col d-flex justify-content-center copyright"> ©Copyright Femke & Nina productions
+                    </div>
+
+                </div>
+
+            </section>
+        </main>
+
+        <script>
+            $(document).ready(function () {
+                $(".toast").toast('show');
+            });
+
+        </script>
 
     </div>
     <!-- Scripts -->
 
     @stack('child-script')
 
-    <div class="overflow-hidden">
+    <div class=" d-none d-xl-block overflow-hidden">
         <div class="circle-1"></div>
         <div class="circle-2"></div>
         <div class="circle-3"></div>
         <div class="circle-4"></div>
     </div>
 
-
-    <script>
-        $(document).ready(function () {
-            document.getElementById("liveToastBtn").onclick = function () {
-                $('.toast').toast('show');
-            }
-        })
-
-        var myCarousel = document.querySelector('#myCarousel')
-        var carousel = new bootstrap.Carousel(myCarousel, {
-            interval: 2000,
-            wrap: false
-        })
-
-    </script>
-
-    <script src="{{ asset('js/app.js') }}"></script>
-
-</html>
 </body>
 
 </html>

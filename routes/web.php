@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,5 +26,11 @@ Route::resource('/product', 'App\Http\Controllers\ProductController');
 Route::resource('/category', 'App\Http\Controllers\CategoryController');
 
 // S H O P P I N G C A R T
-Route::get('/cart', [\App\Http\Controllers\CartController::class, 'show'])->name('cart.show');
-Route::post('/cart', [\App\Http\Controllers\CartController::class, 'store'])->name('cart.store');
+Route::get('/cart', [CartController::class, 'show'])->name('cart.show');
+Route::post('add-to-cart', [CartController::class, 'addToCart'])->name('add.to.cart');
+Route::patch('update-cart', [CartController::class, 'update'])->name('update.cart');
+Route::delete('remove-from-cart', [CartController::class, 'remove'])->name('remove.from.cart');
+
+// O R D E R S
+Route::post('/finish', [\App\Http\Controllers\OrderController::class, 'finish'])->name('order.finish');
+Route::get('/checkout', [\App\Http\Controllers\OrderController::class, 'show'])->name('order.show');

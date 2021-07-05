@@ -3,7 +3,7 @@
             <div id="logo">
                 <i class="bi bi-controller hvr-grow"></i>
             </div>
-            <a class="navbar-brand mx-2" href="/"> Games. </a>
+            <a class="navbar-brand mx-md-2" href="/"> Games. </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -12,14 +12,14 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
-                    <li class="nav-item">
+                <ul class="navbar-nav mb-2 mb-lg-0 mx-auto">
+                    <li class="nav-item  ms-md-3">
                         <a class="nav-link hvr-underline-reveal" href="#">Games</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item  ms-md-3">
                         <a class="nav-link hvr-underline-reveal" href="#">Merch</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown ms-md-3">
                         <a class="nav-link dropdown-toggle hvr-underline-reveal" href="#" id="navbarDropdown"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Franchises
@@ -32,12 +32,12 @@
                     </li>
                 </ul>
 
-                <form class="d-flex">
+                <form class="d-none d-lg-flex">
                     <input class="form-control d-none d-xxl-flex mx-1" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-cart mx-1" type="submit"><i class="bi bi-search hvr-grow"></i></button>
                 </form>
-                <button class="btn btn-cart mx-1"><i class="bi bi-person-fill hvr-grow"></i></button>
-                <a href="{{ route('cart.show') }}" class="btn btn-cart d-xxl-none"><i class="bi bi-basket2-fill hvr-grow"></i></a>
+                <button class="btn btn-cart mx-1 my-1 d-flex"><i class="bi bi-person-fill hvr-grow"></i></button>
+                <a href="{{ route('cart.show') }}" class="btn btn-cart d-xxl-none mx-1 my-1"><i class="bi bi-basket2-fill hvr-grow"></i></a>
                 <button class="btn btn-cart d-none d-xxl-inline px-3 mx-1 text-nowrap" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                     aria-controls="offcanvasRight"><i class="bi bi-basket2-fill hvr-grow">
                     <div class="badge" id="total-products">

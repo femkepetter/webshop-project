@@ -91,21 +91,3 @@
         }
 </script>
 @endpush
-
-{{-- $(".add-to-cart").click(function (e) {
-    e.preventDefault();
-
-    let productId = $(this).attr('data-id');
-
-    $.ajax({
-        url: '{{ route('add.to.cart') }}',
-        method: "POST",
-        data: {
-            _token: '{{ csrf_token() }}',
-            id: productId, 
-        },
-        success: function (response) {
-                window.location.reload();
-        }
-});
-}); --}}

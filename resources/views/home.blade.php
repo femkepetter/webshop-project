@@ -44,8 +44,8 @@
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg-3 text-center">
-                    <button data-id="{{ $product->id }}" 
-                        class="btn btn-cart add-to-cart" role="button"><i
+                    <button id="homeCartButton"
+                        class="btn btn-cart add-to-cart" role="button" onclick="addToCart()"><i
                         class="bi bi-bag-plus-fill hvr-grow"></i></button>
                 </div>
             </div>
@@ -57,22 +57,31 @@
 
 @push('child-script')
 <script>
- $(".add-to-cart").click(function (e) {
-        e.preventDefault();
+ function addToCart(){
 
-        let productId = $(this).attr('data-id');
+        let cartButton = document.getElementById('homeCartButton');
+      
 
-        $.ajax({
-            url: '{{ route('add.to.cart') }}',
+        axios({
+            url: "{{ route('add.to.cart') }}",
             method: "POST",
             data: {
-                _token: '{{ csrf_token() }}',
-                id: productId, 
-            },
-            success: function (response) {
-                    window.location.reload();
+                product_id: '{{ $product->id }}'
             }
-    });
- });
+            }).then(function (response) {
+                console.log($('$product->id'));
+                if (response.data.success === true) {
+                    $('#total-products').html(response.data.total_count)
+                    //$(document).
+                    $('#p_id_' + '{{ $product->id }}' + '_count').html(response.data.quantity)
+                    $('#p_id_' + '{{ $product->id }}' + '_name').html(response.data.name)
+                    $('#p_id_' + '{{ $product->id }}' + '_price').html(response.data.price)
+                } else {
+                    console.log('It does not work..');
+                }
+            }).catch(function (response) {
+                alert(response.data.message)
+            })
+        }
 </script>
 @endpush

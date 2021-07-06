@@ -1,15 +1,15 @@
 @extends('layouts.app')
 @section('content')
 <h1 class="text-center mb-5">Your cart.</h1>
+<div class="table-responsive">
 <table id="cart" class="table table-hover table-condensed">
-    
     <thead>
-        <tr>
-            <th style="width:28%">Product</th>
-            <th style="width:10%">Price</th>
-            <th style="width:6%">Quantity</th>
-            <th style="width:10%">Delete</th>
-            <th style="width:22%" class="text-end">Subtotal</th>
+        <tr class>
+            <th style="width:28% ">Product</th>
+            <th style="width:10% ">Price</th>
+            <th style="width:6% ">Quantity</th>
+            <th style="width:10% ">Delete</th>
+            <th style="width:22% " class="text-end">Subtotal</th>
  
         </tr>
     </thead>
@@ -40,13 +40,14 @@
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="5" class="text-end"><h3><strong>Total: ${{ $total }}</strong></h3></td>
+            <td colspan="5" class="text-end"><h3><strong>Subtotal: ${{ $total }}</strong></h3></td>
         </tr>
     </tfoot>
 </table>
+</div>
 
 <div class="text-center">
-                <a href="{{ url('/') }}" class="btn btn-cart"> Continue Shopping</a>
+                <a href="{{ url('/') }}" class="btn btn-cart my-1 text-nowrap"> Continue Shopping</a>
                 <button onclick="window.location='{{ url("/checkout") }}'" class="btn btn-cart">Checkout</button>
             <div>
 @endsection

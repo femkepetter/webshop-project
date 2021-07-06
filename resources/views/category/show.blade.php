@@ -3,12 +3,12 @@
 @section('content')
 
 @if ($products->count() > 0)
-<div class="row px-5 gx-5">
+<div class="row px-md-5 gx-md-5">
 @foreach ($products as $product)
-<div class="col-md-6 col-xl-4">
+<div class="col-12 col-md-6 col-xl-4">
         <img src="https://picsum.photos/320/250" alt="" class="img-fluid">
             <div class="row my-2">
-                <div class="col-sm-8 col-lg-9  my-auto mt-2">
+                <div class="col-sm-8 col-lg-9 my-auto mt-2">
                     <a href="{{ route('product.show', $product) }}">
                         <h3>{{ $product->name }} ${{ $product->price }}</h3>
                     </a>

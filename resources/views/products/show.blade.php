@@ -107,7 +107,7 @@
 @push('child-script')
 <script type="text/javascript">
  function addToCart(){
-
+ 
         let cartButton = document.getElementById('cartButton');
 
         axios({

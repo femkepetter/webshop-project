@@ -33,18 +33,18 @@
     <i class="bi bi-arrow-down-circle hvr-wobble-vertical" id="logo"></i>
 </div>
 
-@foreach ($products as $product)
-@if ($loop -> iteration < 7 )
+@foreach ($products as $item)
+@if ($item->id < 7)
     <div class="col-md-6 col-xl-4 my-3">
         <img src="https://picsum.photos/320/250" alt="" class="img-fluid">
             <div class="row my-2">
                 <div class="col-sm-8 col-lg-9  my-auto mt-2">
-                    <a href="{{ route('product.show', $product) }}">
-                        <h3>{{ $product->name }} ${{ $product->price }}</h3>
+                    <a href="{{ route('product.show', $item) }}">
+                        <h3>{{ $item->name }} ${{ $item->price }}</h3>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg-3 text-center">
-                        <a role="button" id="homeCartButton" class="btn btn-cart add-to-cart" onclick="addToCart()">
+                        <a role="button" product_id="{{ $item->id }}" route="{{route('add.to.cart', $item->id)}}" id="homeCartButton" class="btn btn-cart add-to-cart" onclick="addToCart()">
                             <i class="bi bi-bag-plus-fill hvr-grow"></i>
                         </a>
                     </div>
@@ -61,15 +61,11 @@
     
     
     @foreach ($category as $cat)
-    
-                
                     <div class="col-md-6 col-xl-4 my-3 text-center">
                         <a href="{{ route('category.show', $cat) }}" class="text-decoration-none hvr-grow">
                             <h3 class="cat-title">{{ $cat->name }}</h3>
                         </a>
                     </div>
-                
-       
     @endforeach
 
 @endsection
@@ -81,15 +77,14 @@
         let cartButton = document.getElementById('homeCartButton');
 
         axios({
-            url: "{{ route('add.to.cart') }}",
+            url: cartButton.getAttribute('route'),
             method: "POST",
             data: {
-                product_id: '{{ $product->id }}'
+                product_id: cartButton.getAttribute('product_id')
             }
             }).then(function (response) {
-             
+
                 if (response.data.success === true) {
-                    console.log(product.id)
                     $('#total-products').html(response.data.total_count)
                     $('#cart tbody tr').remove()
                     let cart = Object.values(response.data.cart);

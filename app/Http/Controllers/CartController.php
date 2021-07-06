@@ -28,8 +28,9 @@ class CartController extends Controller
             $this->cartCounter();
 
             $product = Product::findOrFail($request->product_id);
-
+            dd($product);
             $cart = session()->get('cart', []);
+
             $isNew = false;
 
             if (isset($cart[$request->product_id])) {

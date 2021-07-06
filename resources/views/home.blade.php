@@ -44,13 +44,12 @@
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg-3 text-center">
-                    <button id="homeCartButton"
-                        class="btn btn-cart add-to-cart" role="button" onclick="addToCart()"><i
-                        class="bi bi-bag-plus-fill hvr-grow"></i></button>
-                </div>
+                        <a role="button" id="homeCartButton" class="btn btn-cart add-to-cart" onclick="addToCart()">
+                            <i class="bi bi-bag-plus-fill hvr-grow"></i>
+                        </a>
+                    </div>
             </div>
     </div>
-
     @endif
     @endforeach
 
@@ -76,11 +75,10 @@
 @endsection
 
 @push('child-script')
-<script>
+<script type="text/javascript">
  function addToCart(){
 
         let cartButton = document.getElementById('homeCartButton');
-      
 
         axios({
             url: "{{ route('add.to.cart') }}",
@@ -89,13 +87,19 @@
                 product_id: '{{ $product->id }}'
             }
             }).then(function (response) {
-                console.log($('$product->id'));
+             
                 if (response.data.success === true) {
+                    console.log(product.id)
                     $('#total-products').html(response.data.total_count)
-                    //$(document).
-                    $('#p_id_' + '{{ $product->id }}' + '_count').html(response.data.quantity)
-                    $('#p_id_' + '{{ $product->id }}' + '_name').html(response.data.name)
-                    $('#p_id_' + '{{ $product->id }}' + '_price').html(response.data.price)
+                    $('#cart tbody tr').remove()
+                    let cart = Object.values(response.data.cart);
+                    let html = ''
+                    cart.forEach(product => 
+                        $('#cart tbody').append(
+                            '<tr data-id="' + product.id + '"><td data-th="Product">' + product.name + '</td><td data-th="Price">$' + product.price + '</td><td data-th="Quantity" class="text-center">' + product.quantity + 'x</td><td data-th="Total" class="text-end">$' + product.price * product.quantity + '</td></tr>'
+                        )
+                    )
+
                 } else {
                     console.log('It does not work..');
                 }
@@ -103,5 +107,6 @@
                 alert(response.data.message)
             })
         }
+        
 </script>
 @endpush

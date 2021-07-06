@@ -49,12 +49,9 @@ class CartController extends Controller
             return response()->json([
                 'success'       => true,
                 'message'       => 'Product toegevoegd',
-                'quantity'      => $cart[$request->product_id]['quantity'],
                 'total_count'   => $this->cartCounter(),
-                'name'          => $cart[$request->product_id]['name'],
-                'price'         => $cart[$request->product_id]['price'],
-                'id'            => $cart[$request->product_id]['id'],
-                'is_new'        => $isNew
+                'is_new'        => $isNew,
+                'cart'          => $cart
             ]);
         } catch (Exception $e) {
             return response()->json([

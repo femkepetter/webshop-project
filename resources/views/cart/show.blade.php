@@ -21,7 +21,6 @@
                 <tr data-id="{{ $id }}">
                     <td data-th="Product">
                         <div class="row">
-                            {{-- <div class="col-sm-3 hidden-xs"><img src="{{ $details['image'] }}" width="100" height="100" class="img-responsive"/></div> --}}
                             <div class="col-sm-9">
                                 <h4 class="nomargin">{{ $details['name'] }}</h4>
                             </div>
@@ -41,14 +40,8 @@
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="5" class="text-end"><h3><strong>Subtotal: ${{ $total }}</strong></h3></td>
+            <td colspan="5" class="text-end"><h3><strong>Total: ${{ $total }}</strong></h3></td>
         </tr>
-        {{-- <tr>
-            <td colspan="5" class="text-right">
-                <a href="{{ url('/') }}" class="btn btn-cart">Continue Shopping</a>
-                <a href="{{ url('/checkout') }}" class="btn btn-cart"><button class="btn btn-cart">Checkout</button></a>
-            </td>
-        </tr> --}}
     </tfoot>
 </table>
 

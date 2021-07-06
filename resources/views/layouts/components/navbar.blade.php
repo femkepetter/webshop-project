@@ -71,22 +71,8 @@
                                 {{ $itemCount ?? '' }}
                                 </span>
                         </div>
-                        
-                    
-                        @if(session('cart'))
-                        @foreach(session('cart') as $id => $details)
-                        @php $totalPrice = $details['quantity'] * $details['price'] @endphp
-                            <div class="row cart-detail">
-                                <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
-                                    <span id="p_id_{{ $id }}_count" class="count">{{ $details['quantity'] ?? '' }}x</span>
-                                    <span id="p_id_{{ $id }}_name">{{ $details['name'] ?? '' }}</span>
-                                    <span id="p_id_{{ $id }}_price" class="price text-info"> ${{ $totalPrice ?? '' }}</span> 
-                                </div>
-                            </div>
-                        @endforeach
-                        @endif
 
-                        <table id="cart" class="table table-hover table-condensed">
+    <table id="cart" class="table table-hover table-condensed">
     
     <thead>
         <tr>
@@ -97,6 +83,7 @@
  
         </tr>
     </thead>
+
     <tbody>
         @php $total = 0 @endphp
         @if(session('cart'))
@@ -113,7 +100,7 @@
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="5" class="text-end"><h3><strong>Subtotal: ${{ $total }}</strong></h3></td>
+            <td colspan="5" class="text-end"><h3><strong>Total: ${{ $total }}</strong></h3></td>
         </tr>
     </tfoot>
 </table>

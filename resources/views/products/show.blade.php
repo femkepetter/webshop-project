@@ -109,7 +109,6 @@
  function addToCart(){
 
         let cartButton = document.getElementById('cartButton');
-      
 
         axios({
             url: "{{ route('add.to.cart') }}",
@@ -118,13 +117,18 @@
                 product_id: '{{ $product->id }}'
             }
             }).then(function (response) {
-                console.log($('#total-products'));
+             
                 if (response.data.success === true) {
                     $('#total-products').html(response.data.total_count)
-                    //$(document).
-                    $('#p_id_' + '{{ $product->id }}' + '_count').html(response.data.quantity)
-                    $('#p_id_' + '{{ $product->id }}' + '_name').html(response.data.name)
-                    $('#p_id_' + '{{ $product->id }}' + '_price').html(response.data.price)
+                    $('#cart tbody tr').remove()
+                    let cart = Object.values(response.data.cart);
+                    let html = ''
+                    cart.forEach(product => 
+                        $('#cart tbody').append(
+                            '<tr data-id="' + product.id + '"><td data-th="Product">' + product.name + '</td><td data-th="Price">$' + product.price + '</td><td data-th="Quantity" class="text-center">' + product.quantity + 'x</td><td data-th="Total" class="text-end">$' + product.price * product.quantity + '</td></tr>'
+                        )
+                    )
+
                 } else {
                     console.log('It does not work..');
                 }

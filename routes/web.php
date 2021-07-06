@@ -25,6 +25,9 @@ Route::resource('/product', 'App\Http\Controllers\ProductController');
 // C A T E G O R I E S
 Route::resource('/category', 'App\Http\Controllers\CategoryController');
 
+// P R O D U C T T Y P E S
+Route::resource('/product_type', 'App\Http\Controllers\ProductTypeController');
+
 // S H O P P I N G C A R T
 Route::get('/cart', [CartController::class, 'show'])->name('cart.show');
 Route::post('add-to-cart', [CartController::class, 'addToCart'])->name('add.to.cart');

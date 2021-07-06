@@ -33,7 +33,7 @@ class OrderController extends Controller
             $newOrder->delivery_address = $request->delivery_address;
             $newOrder->save();
 
-            $order_id = DB::getPdo()->lastInsertId();
+            $order_id = DB::getPdo()->lastInsertId(); //order_id = newOrder id? 
 
             foreach ($cart as $item) {
                 $orderProduct = new Order_Product();

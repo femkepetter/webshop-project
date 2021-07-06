@@ -43,7 +43,7 @@
             <section class="glass justify-content-center mx-auto shadow px-5 py-4">
 
 
-                <div class="row px-5 gx-5 mb-5">
+                <div class="row justify-content-center px-md-5 gx-md-5 mb-5">
 
                     @yield('content')
 

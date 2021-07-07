@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Order;
 use App\Models\Order_Product;
 use App\Models\Product;
+use App\Models\ProductType;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,8 +16,13 @@ class OrderController extends Controller
 {
     public function show()
     {
-        return view('order.show');
+        return view('order.show',[
+                'category' => Category::all(),
+                'product_type'  => ProductType::all(),
+            
+        ]);
     }
+
 
     public function finish(Request $request, Product $product)
     {
@@ -46,7 +53,12 @@ class OrderController extends Controller
 
             Session::forget('cart');
 
-            return view('order.finish');
+            return view('order.finish',
+            [
+                'category' => Category::all(),
+                'product_type'  => ProductType::all(),
+            ]);
+            
         } catch (Exception $e) {
             return response()->json([
                 'success'   => false,

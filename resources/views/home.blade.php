@@ -33,29 +33,33 @@
     <i class="bi bi-arrow-down-circle hvr-wobble-vertical" id="logo"></i>
 </div>
 
+<div class="row display-align">
 @foreach ($products as $item)
 @if ($item->id < 7)
-    <div class="col-md-6 col-xl-4 my-3 align-content-center">
-        <img src="https://picsum.photos/320/250" alt="" class="img-fluid">
+    <div class="col-md-6 col-xl-4 my-3">
+    <img src="https://picsum.photos/320/250" alt="" class="img-fluid">
             <div class="row my-2">
-                <div class="col-sm-8 col-lg-9  my-auto mt-2">
+                <div class="col-sm-8 col-lg-8 mt-2">
                     <a href="{{ route('product.show', $item) }}">
                         <h3>{{ $item->name }} ${{ $item->price }}</h3>
                     </a>
                 </div>
-                <div class="col-sm-12 col-md-3 col-lg-3 text-center">
+                <div class="col-sm-12 col-md-3 col-lg-4">
                         <a role="button" data-id="{{ $item->id }}" id="homeCartButton" class="btn btn-cart add-to-cart">
                             <i class="bi bi-bag-plus-fill hvr-grow"></i>
                         </a>
                     </div>
             </div>
+                    
     </div>
+
     @endif
     @endforeach
+</div>
 
     <div class="text-center divider">
 
-        <h2>Our franchises. </h2>
+        <h2>Our franchises.</h2>
         <i class="bi bi-arrow-down-circle hvr-wobble-vertical" id="logo"></i>
     </div>
     

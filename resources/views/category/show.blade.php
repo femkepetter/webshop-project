@@ -3,7 +3,7 @@
 @section('content')
 
 @if ($products->count() > 0)
-<div class="row px-md-5 gx-md-5">
+<div class="row pics">
 @foreach ($products as $product)
 <div class="col-12 col-md-6 col-xl-4">
         <img src="https://picsum.photos/320/250" alt="" class="img-fluid">

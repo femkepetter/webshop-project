@@ -16,14 +16,13 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function show(Category $category, ProductType $productType)
+    public function show(Category $category, ProductType $producttype)
     {
         return view('category.show', [
-            'category'  => $category,
+            'category' => Category::all(),
             'products'   => $category->products()->get(),
-            'product_type'  => $productType,
-            
+            'product_type'  => ProductType::all(),
+
         ]);
     }
-
 }

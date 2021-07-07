@@ -11,9 +11,7 @@ class ProductType extends Model
 
     protected $guarded = ['id'];
 
-    protected $table = 'product_types';
-
-    public function productsForType()
+    public function products()
     {
         return $this->hasMany(Product::class, 'product_types_id');
     }

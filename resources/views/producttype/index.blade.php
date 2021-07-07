@@ -9,7 +9,7 @@
                 <div class="row">
                     @foreach ($product_type as $ptype)
                     <div class="col">
-                        <a href="{{ Route('category.show', $cat) }}">
+                        <a href="{{ Route('producttype.show', $ptype) }}">
                             <h3>{{ $ptype->name }}</h3>
                         </a>
                         <img src="https://picsum.photos/300" alt="placeholder">

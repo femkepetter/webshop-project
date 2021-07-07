@@ -68,5 +68,9 @@
 @endsection
 
 @push('child-script')
-
+<script type="text/javascript">
+    $(document).ready(function() {
+       $('#toast').toast('dispose')
+    })
+    </script>
 @endpush

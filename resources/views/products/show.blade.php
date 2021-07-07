@@ -58,45 +58,58 @@
 
     </div>
    
+    @foreach ($review as $item)
+    {{-- @if ($review->product_id === $product->id) --}}
     <div class="card mx-auto mt-5 px-4 col-11">
-        ratings:
-        display name
-        rating
-        comment
+        <p>
+            {{ $item->rating }}
+        </p>
+        <p>
+            {{ $item->name }}
+        </p>
+        <p>
+            {{ $item->comment }}
+        </p>
     </div>
-
+    {{-- @else
+    no reviews yet
+    @endif --}}
+    @endforeach
 
     <div class="card mx-auto my-5 px-4 col-11">
+            <form action="{{route('add.review')}}" method="POST">
+                @csrf
         <div class="input-group my-3">
             <div class="row">
                 <div class="col-12 col-md-6 mb-3">
-                    <label for="starrating" class="form-label">Rate this product:</label>
-                    <select class="form-select" aria-label="Default select example" id="starrating">
-                        <option value="1">1 star</option>
-                        <option value="2">2 star</option>
-                        <option value="3">3 star</option>
-                        <option value="4">4 star</option>
+                    <label for="rating" class="form-label">Rate this product:</label>
+                    <select class="form-select" aria-label="Default select example" name="rating" id="rating">
                         <option value="5">5 star</option>
+                        <option value="4">4 star</option>
+                        <option value="3">3 star</option>
+                        <option value="2">2 star</option>
+                        <option value="1">1 star</option>
                     </select>
                 </div>
                 <div class="col-12 col-md-6 mb-3">
-                    <label for="starrating" class="form-label">We need a name:</label>
-                    <input type="text" class="form-control" placeholder="Your name here" aria-label="Username"
-                        id="commentname">
+                    <label for="rating" class="form-label">We need a name:</label>
+                    <input type="text" class="form-control" name="name" placeholder="Your name here" aria-label="Username"
+                        id="name" required>
                 </div>
             </div>
             <div class="col-12 mb-3">
-                <label for="reviewcomment" class="form-label">And leave a comment:</label>
+                <label for="comment" class="form-label">And leave a comment:</label>
                 <div class="input-group">
-                    <textarea class="form-control" aria-label="With textarea" placeholder="The best game ever!"
-                        id="reviewcomment"></textarea>
+                    <textarea class="form-control" name="comment" aria-label="With textarea" placeholder="The best game ever!"
+                        id="comment" required></textarea>
                 </div>
             </div>
+            <input type="hidden" value="{{ $product->id }}" name="product_id" id="product_id">
             <div>
                 <input class="btn btn-cart" type="submit" value="Submit">
             </div>
         </div>
-
+    </form>
     </div>
 
 </div>
@@ -139,6 +152,6 @@
                 alert(response.data.message)
             })
         }
-        
 </script>
+
 @endpush

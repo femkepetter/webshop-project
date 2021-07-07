@@ -44,7 +44,7 @@
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg-3 text-center">
-                        <a role="button" product_id="{{ $item->id }}" route="{{route('add.to.cart', $item->id)}}" id="homeCartButton" class="btn btn-cart add-to-cart" onclick="addToCart()">
+                        <a role="button" data-id="{{ $item->id }}" id="homeCartButton" class="btn btn-cart add-to-cart">
                             <i class="bi bi-bag-plus-fill hvr-grow"></i>
                         </a>
                     </div>
@@ -72,18 +72,18 @@
 
 @push('child-script')
 <script type="text/javascript">
- function addToCart(){
-
-        let cartButton = document.getElementById('homeCartButton');
-
+ 
+ $(document).ready(function() {
+    $(document).on("click",".add-to-cart",function() {
+       
+        let product_id = $(this).data('id');
         axios({
-            url: cartButton.getAttribute('route'),
+            url: '{{ route('add.to.cart') }}',
             method: "POST",
             data: {
-                product_id: cartButton.getAttribute('product_id')
+                product_id: product_id
             }
             }).then(function (response) {
-
                 if (response.data.success === true) {
                     $('#total-products').html(response.data.total_count)
                     $('#cart tbody tr').remove()
@@ -101,7 +101,8 @@
             }).catch(function (response) {
                 alert(response.data.message)
             })
-        }
+        })
+ });
         
 </script>
 @endpush

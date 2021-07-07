@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductType;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,7 @@ class ProductController extends Controller
     {
         return view('products.index', [
             'products' => Product::all(),
+            'product_type'  => ProductType::all(),
         ]);
     }
 

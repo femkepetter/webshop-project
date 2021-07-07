@@ -108,7 +108,7 @@
  $(document).ready(function() {
     $('#toast').toast('dispose')
  })
- 
+
  function addToCart(){
  
         let cartButton = document.getElementById('cartButton');

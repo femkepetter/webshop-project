@@ -49,10 +49,10 @@
 
                 </div>
 
-                @if(session('success'))
+                {{-- @if(session('success')) --}}
 
                 <div class="btn-cart toast position-fixed bottom-0 end-0 p-3 text-white border-0 my-2 mx-2"
-                    style="z-index: 11" role="alert" aria-live="assertive" aria-atomic="true">
+                    style="z-index: 11" role="alert" aria-live="assertive" aria-atomic="true" id="toast">
                     <div class="d-flex">
                         <div class="toast-body">
                             Your cart has been updated.
@@ -61,8 +61,8 @@
                             aria-label="Close"></button>
                     </div>
                 </div>
-
-                @endif
+{{-- 
+                @endif --}}
 
                 <div class="row mx-auto mt-5">
                     <div class="col-12 d-flex justify-content-center mt-5 ">
@@ -85,7 +85,6 @@
             $(document).ready(function () {
                 $(".toast").toast('show');
             });
-
         </script>
 
     </div>

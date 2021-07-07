@@ -43,7 +43,7 @@
             <section class="glass justify-content-center mx-auto shadow px-5 py-4">
 
 
-                <div class="row justify-content-center px-md-5 gx-md-5 mb-5">
+                <div class="row mx-auto px-md-5 gx-md-5 mb-5">
 
                     @yield('content')
 
@@ -61,7 +61,7 @@
                             aria-label="Close"></button>
                     </div>
                 </div>
-{{-- 
+                {{-- 
                 @endif --}}
 
                 <div class="row mx-auto mt-5">
@@ -85,6 +85,7 @@
             $(document).ready(function () {
                 $(".toast").toast('show');
             });
+
         </script>
 
     </div>

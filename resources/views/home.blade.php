@@ -35,7 +35,7 @@
 
 @foreach ($products as $item)
 @if ($item->id < 7)
-    <div class="col-md-6 col-xl-4 my-3">
+    <div class="col-md-6 col-xl-4 my-3 align-content-center">
         <img src="https://picsum.photos/320/250" alt="" class="img-fluid">
             <div class="row my-2">
                 <div class="col-sm-8 col-lg-9  my-auto mt-2">
@@ -72,10 +72,7 @@
 
 @push('child-script')
 <script type="text/javascript">
-  $(document).ready(function() {
-    $('#toast').toast('dispose')
- })
-
+ 
  $(document).ready(function() {
     $(document).on("click",".add-to-cart",function() {
        
@@ -97,7 +94,7 @@
                             '<tr data-id="' + product.id + '"><td data-th="Product">' + product.name + '</td><td data-th="Price">$' + product.price + '</td><td data-th="Quantity" class="text-center">' + product.quantity + 'x</td><td data-th="Total" class="text-end">$' + product.price * product.quantity + '</td></tr>'
                         )
                     )
-                    $('#toast').toast('show')
+
                 } else {
                     console.log('It does not work..');
                 }

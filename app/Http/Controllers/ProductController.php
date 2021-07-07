@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductType;
 use Exception;
@@ -24,8 +25,9 @@ class ProductController extends Controller
     {
         return view('products.show', [
             'product'  => $product,
-            'category' => $product->category()->get(),
-            'product_type' => $product->productType()->get()
+            'category' => Category::all(),
+            'product_type' => $product->productType()->get(),
+            'product_type'  => ProductType::all(),
         ]);
     }
 }

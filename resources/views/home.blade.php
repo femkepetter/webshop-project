@@ -72,7 +72,10 @@
 
 @push('child-script')
 <script type="text/javascript">
- 
+  $(document).ready(function() {
+    $('#toast').toast('dispose')
+ })
+
  $(document).ready(function() {
     $(document).on("click",".add-to-cart",function() {
        
@@ -94,7 +97,7 @@
                             '<tr data-id="' + product.id + '"><td data-th="Product">' + product.name + '</td><td data-th="Price">$' + product.price + '</td><td data-th="Quantity" class="text-center">' + product.quantity + 'x</td><td data-th="Total" class="text-end">$' + product.price * product.quantity + '</td></tr>'
                         )
                     )
-
+                    $('#toast').toast('show')
                 } else {
                     console.log('It does not work..');
                 }

@@ -9,16 +9,16 @@ class ProductTypeController extends Controller
 {
     public function index()
     {
-        return view('product_type.index', [
+        return view('producttype.index', [
             'product_type' => ProductType::all()
         ]);
     }
 
     public function show(ProductType $productType)
     {
-        return view('product_type.show', [
+        return view('producttype.show', [
             'product_type'  => $productType,
-            'products'   => $productType->products()->get(),
+            'products'   => $productType->productsForType()->get(),
         ]);
     }
 }

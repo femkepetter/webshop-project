@@ -15,7 +15,7 @@
                 @foreach ($product_type as $ptype)
                 <li class="nav-item  ms-md-3">
                     <a class="nav-link hvr-underline-reveal"
-                        href="{{ route('product_type.show', $ptype->id) }}">{{ $ptype->name }}</a>
+                        href="{{ route('producttype.show', $ptype->id) }}">{{ $ptype->name }}</a>
                 </li>
                 @endforeach
 

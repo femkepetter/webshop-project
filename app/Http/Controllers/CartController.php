@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductType;
 use Exception;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Support\Facades\Session;
@@ -13,7 +15,10 @@ class CartController extends Controller
 {
     public function show()
     {
-        return view('cart.show');
+        return view('cart.show',[
+            'category' => Category::all(),
+            'product_type'  => ProductType::all(),
+    ]);
     }
 
     /**

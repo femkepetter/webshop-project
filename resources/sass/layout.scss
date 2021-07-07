@@ -3,29 +3,24 @@ body {
     padding: 0;
     min-height: 100vh;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 1rem;
     background-color: #c6dcee;
     background: linear-gradient(to left bottom, #c6dcee, #c8bfdd);
     background-repeat: no-repeat;
     background-attachment: fixed;
-
-
 }
 
 main {
     color: rgb(25, 2, 48);
 }
 
-
 h1 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 700;
     font-size: 3rem;
     letter-spacing: 0.1rem;
     margin-bottom: 1.5rem;
-
-
 }
 
 /* If the screen size is 1200px wide or more, set the font-size to 80px */
@@ -45,7 +40,6 @@ h1 {
 h3 {
     font-weight: 500;
     font-size: 1.2rem;
-
 }
 
 hr {
@@ -56,7 +50,7 @@ hr {
 }
 
 nav {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     z-index: 2;
     margin-top: 5rem;
     max-width: 75%;
@@ -102,10 +96,9 @@ nav {
 }
 
 .copyright {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     color: rgb(226, 223, 223);
     font-weight: 700;
-
 }
 
 .btn-cart {
@@ -119,7 +112,11 @@ nav {
 
 .btn-cart:hover {
     border-style: none;
-    background-image: linear-gradient(to left bottom, rgb(83, 158, 255), #6dc9ff);
+    background-image: linear-gradient(
+        to left bottom,
+        rgb(83, 158, 255),
+        #6dc9ff
+    );
     color: white;
 }
 
@@ -143,7 +140,6 @@ nav {
     position: relative;
 }
 
-
 .divider {
     margin-top: 5rem;
     margin-bottom: 4rem;
@@ -156,7 +152,7 @@ nav {
     -webkit-text-fill-color: transparent;
     text-transform: uppercase;
     text-shadow: 0px 0px 20px rgba(83, 157, 255, 0.582);
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 700;
 }
 
@@ -177,9 +173,11 @@ nav {
 .circle-1,
 .circle-2 {
     background: white;
-    background: linear-gradient(to right bottom,
-            rgba(177, 247, 250, 0.4),
-            rgba(250, 170, 250, 0.2));
+    background: linear-gradient(
+        to right bottom,
+        rgba(177, 247, 250, 0.4),
+        rgba(250, 170, 250, 0.2)
+    );
     height: 20rem;
     width: 20rem;
     position: absolute;
@@ -199,9 +197,11 @@ nav {
 
 .circle-3 {
     background: rgb(97, 39, 190);
-    background: linear-gradient(to right bottom,
-            rgba(162, 106, 252, 0.2),
-            rgba(250, 190, 255, 0.5));
+    background: linear-gradient(
+        to right bottom,
+        rgba(162, 106, 252, 0.2),
+        rgba(250, 190, 255, 0.5)
+    );
     height: 30rem;
     width: 30rem;
     position: absolute;
@@ -213,9 +213,11 @@ nav {
 
 .circle-4 {
     background: rgb(97, 39, 190);
-    background: linear-gradient(to right bottom,
-            rgba(173, 255, 244, 0.5),
-            rgba(155, 203, 248, 0.3));
+    background: linear-gradient(
+        to right bottom,
+        rgba(173, 255, 244, 0.5),
+        rgba(155, 203, 248, 0.3)
+    );
     height: 50rem;
     width: 50rem;
     position: absolute;

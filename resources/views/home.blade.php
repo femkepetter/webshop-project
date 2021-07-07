@@ -55,7 +55,7 @@
 
     <div class="text-center divider">
 
-        <h2>Our franchises.</h2>
+        <h2>Our franchises. </h2>
         <i class="bi bi-arrow-down-circle hvr-wobble-vertical" id="logo"></i>
     </div>
     

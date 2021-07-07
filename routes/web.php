@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -37,3 +38,8 @@ Route::delete('remove-from-cart', [CartController::class, 'remove'])->name('remo
 // O R D E R S
 Route::post('/finish', [\App\Http\Controllers\OrderController::class, 'finish'])->name('order.finish');
 Route::get('/checkout', [\App\Http\Controllers\OrderController::class, 'show'])->name('order.show');
+
+// R E V I E W S 
+Route::post('add-review', [ReviewController::class, 'addReview'])->name('add.review');
+Route::patch('update-review', [ReviewController::class, 'update'])->name('update.review');
+Route::delete('remove-review', [ReviewController::class, 'remove'])->name('remove.review');

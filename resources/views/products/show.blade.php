@@ -48,7 +48,7 @@
         <h3>
             See more by: <br>
             <a href="{{ route('category.show', $product->category) }}"
-                class="mt-2 cat-title text-decoration-none hvr-grow">
+                class="mt-2 cat-title text-decoration-none hvr-grow my-3">
                 {{ $product->category->name }}</a>
         </h3>
 
@@ -60,16 +60,17 @@
    
     @foreach ($review as $item)
     {{-- @if ($review->product_id === $product->id) --}}
-    <div class="card mx-auto mt-5 px-4 col-11">
-        <p>
-            {{ $item->rating }}
+    <div class="card mx-auto mt-5 px-4 col-11 pt-3">
+        <p class="cat-title">
+              {{ $item->rating }} <i class="bi bi-star-fill "></i>
         </p>
         <p>
-            {{ $item->name }}
+            " {{ $item->comment }} "
         </p>
-        <p>
-            {{ $item->comment }}
+        <p class="text-muted small em">
+            - {{ $item->name }}
         </p>
+       
     </div>
     {{-- @else
     no reviews yet

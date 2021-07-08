@@ -3,23 +3,25 @@
 @section('content')
 
 @if ($products->count() > 0)
-<div class="row pics">
+<div class="row display-align">
 @foreach ($products as $product)
-<div class="col-12 col-md-6 col-xl-4">
-        <img src="https://picsum.photos/320/250" alt="" class="img-fluid">
+
+<div class="col-md-6 col-xl-4 my-3 text-center">
+    <img src="https://picsum.photos/320/250" alt="" class="img-fluid">
             <div class="row my-2">
-                <div class="col-sm-8 col-lg-9 my-auto mt-2">
-                    <a href="{{ route('product.show', $product) }}">
+                <div class="col-sm-8 col-lg-8 mt-2">
+                <a href="{{ route('product.show', $product) }}">
                         <h3>{{ $product->name }} ${{ $product->price }}</h3>
                     </a>
                 </div>
-                <div class="col-sm-12 col-md-3 col-lg-3 text-center">
-                    <a role="button" data-id="{{ $product->id }}" id="homeCartButton" class="btn btn-cart add-to-cart">
+                <div class="col-sm-12 col-md-3 col-lg-4">
+                <a role="button" data-id="{{ $product->id }}" id="homeCartButton" class="btn btn-cart add-to-cart">
                         <i class="bi bi-bag-plus-fill hvr-grow"></i>
                     </a>
-                </div>
+                    </div>
             </div>
     </div>
+
     @endforeach
 
     @else
@@ -34,7 +36,6 @@
   $(document).ready(function() {
     $('#toast').toast('dispose')
  })
-
  $(document).ready(function() {
     $(document).on("click",".add-to-cart",function() {
        

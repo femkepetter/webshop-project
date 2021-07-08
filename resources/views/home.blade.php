@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
+<div class="row mx-auto">
     <div class="col-xl-4 col-md-12">
         <h1>We sell only the best video-games.</h1>
 
@@ -33,10 +33,10 @@
     <i class="bi bi-arrow-down-circle hvr-wobble-vertical" id="logo"></i>
 </div>
 
-<div class="row display-align">
+<div class="row display-align ">
 @foreach ($products as $item)
 @if ($item->id < 7)
-    <div class="col-md-6 col-xl-4 my-3">
+    <div class="col-md-6 col-xl-4 my-3 text-center">
     <img src="https://picsum.photos/320/250" alt="" class="img-fluid">
             <div class="row my-2">
                 <div class="col-sm-8 col-lg-8 mt-2">
@@ -50,7 +50,6 @@
                         </a>
                     </div>
             </div>
-                    
     </div>
 
     @endif

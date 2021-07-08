@@ -30,13 +30,13 @@
 <div class="text-center divider">
 
     <h2>What's new.</h2>
-    <i class="bi bi-arrow-down-circle hvr-wobble-vertical" id="logo"></i>
+    <a href="#scroll-target"><i class="bi bi-arrow-down-circle hvr-wobble-vertical" id="logo"></i></a>
 </div>
 
-<div class="row display-align ">
+<div class="row display-align">
 @foreach ($products as $item)
 @if ($item->id < 7)
-    <div class="col-md-6 col-xl-4 my-3 text-center">
+    <div class="col-md-6 col-xl-4 my-3 text-center" id="scroll-target">
     <img src="https://picsum.photos/320/250" alt="" class="img-fluid">
             <div class="row my-2">
                 <div class="col-sm-8 col-lg-8 mt-2">
@@ -59,12 +59,12 @@
     <div class="text-center divider">
 
         <h2>Our franchises.</h2>
-        <i class="bi bi-arrow-down-circle hvr-wobble-vertical" id="logo"></i>
+        <a href="#scroll-target-2"><i class="bi bi-arrow-down-circle hvr-wobble-vertical" id="logo"></i></a>
     </div>
     
     
     @foreach ($category as $cat)
-                    <div class="col-md-6 col-xl-4 my-3 text-center">
+                    <div class="col-md-6 col-xl-4 my-3 text-center" id="scroll-target-2">
                         <a href="{{ route('category.show', $cat) }}" class="text-decoration-none hvr-grow">
                             <h3 class="cat-title">{{ $cat->name }}</h3>
                         </a>

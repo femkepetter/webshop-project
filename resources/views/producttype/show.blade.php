@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
-
+<div class="text-center">
+<h1> {{ $product_type }}. </h1>
+</div>
 @if ($products->count() > 0)
 <div class="row display-align">
 @foreach ($products as $item)

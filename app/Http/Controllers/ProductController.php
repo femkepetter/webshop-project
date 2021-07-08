@@ -30,7 +30,7 @@ class ProductController extends Controller
             'category' => Category::all(),
             'product_type' => $product->productType()->get(),
             'product_type'  => ProductType::all(),
-            'review'   => Review::all()
+            'review'   => $product->reviews()->get()
         ]);
     }
 }

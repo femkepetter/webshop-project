@@ -21,7 +21,8 @@ class ProductTypeController extends Controller
     {
 
         return view('producttype.show', [
-            'product_type'  => ProductType::all(),
+            'this_product_type'  => $producttype,
+            'product_type' => ProductType::all(),
             'products'   => $producttype->products()->get(),
             'category' => Category::all(),
         ]);

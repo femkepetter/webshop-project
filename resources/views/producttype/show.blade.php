@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="text-center">
-        <h1> {{ $product_type }}. </h1>
+        <h1> {{ $this_product_type->name }}. </h1>
     </div>
 
 @if ($products->count() > 0)

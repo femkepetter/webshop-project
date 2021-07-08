@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1> {{ $category }}. </h1>
+<h1> {{ $this_category->name }}. </h1>
     @if ($products->count() > 0)
 <div class="row display-align">
     @foreach ($products as $product)

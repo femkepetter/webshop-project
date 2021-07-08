@@ -54,7 +54,22 @@
 
 @push('child-script')
 <script type="text/javascript">
-  
+    $(document).ready(function() {
+        $('#toast').toast('dispose')
+    })
+
+    $(document).ready(function(){
+    //get it if Status key found
+    if(localStorage.getItem("Status"))
+    {
+        $('#toast').toast('show')
+        localStorage.clear();
+    }
+    
+    });
+
+
+
     $(".update-cart").change(function (e) {
         e.preventDefault();
   
@@ -67,8 +82,11 @@
                 _token: '{{ csrf_token() }}', 
                 id: that.parents("tr").attr("data-id"), 
                 quantity: that.parents("tr").find(".quantity").val()
-            },
+            }
+            }).then(function (response) {
+                if (response.data.success === true) {
             success: function (response) {
+                localStorage.setItem("Status",response.data.success)
                window.location.reload();
             }
         });

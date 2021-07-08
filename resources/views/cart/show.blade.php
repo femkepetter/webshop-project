@@ -54,21 +54,20 @@
 
 @push('child-script')
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#toast').toast('dispose')
-    })
 
-    $(document).ready(function(){
+
+  $(document).ready(function(){
     //get it if Status key found
-    if(localStorage.getItem("Status"))
+    if(sessionStorage.getItem("Status"))
     {
         $('#toast').toast('show')
-        localStorage.clear();
+        console.log('It works');
+        sessionStorage.clear();
+    } else {
+        $('#toast').toast('dispose')
+        console.log('nope..');
     }
-    
     });
-
-
 
     $(".update-cart").change(function (e) {
         e.preventDefault();
@@ -82,12 +81,10 @@
                 _token: '{{ csrf_token() }}', 
                 id: that.parents("tr").attr("data-id"), 
                 quantity: that.parents("tr").find(".quantity").val()
-            }
-            }).then(function (response) {
-                if (response.data.success === true) {
+            },
             success: function (response) {
-                localStorage.setItem("Status",response.data.success)
-               window.location.reload();
+                sessionStorage.setItem("Status", response.data)
+                window.location.reload();
             }
         });
     });
@@ -106,6 +103,7 @@
                     id: that.parents("tr").attr("data-id")
                 },
                 success: function (response) {
+                    sessionStorage.setItem("Status", response.data)
                     window.location.reload();
                 }
             });

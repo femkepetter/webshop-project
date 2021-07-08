@@ -37,6 +37,7 @@
   $(document).ready(function() {
     $('#toast').toast('dispose')
  })
+ 
  $(document).ready(function() {
     $(document).on("click",".add-to-cart",function() {
        

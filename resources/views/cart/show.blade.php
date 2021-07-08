@@ -61,11 +61,9 @@
     if(sessionStorage.getItem("Status"))
     {
         $('#toast').toast('show')
-        console.log('It works');
         sessionStorage.clear();
     } else {
         $('#toast').toast('dispose')
-        console.log('nope..');
     }
     });
 

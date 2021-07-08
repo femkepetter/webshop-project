@@ -46,16 +46,13 @@
             {{ $product->description }}
         </p>
         <h3>
-            See more by: <br>
+        See more by: <br>
             <a href="{{ route('category.show', $product->category) }}"
                 class="mt-2 cat-title text-decoration-none hvr-grow my-3">
                 {{ $product->category->name }}</a>
         </h3>
-
         <a role="button" class="btn btn-cart pt-2 text-nowrap" onclick="addToCart()">
-            Add to cart <i class="bi bi-bag-plus-fill hvr-grow"></i>
-        </a>
-
+            Add to cart <i class="bi bi-bag-plus-fill hvr-grow"></i></a>
     </div>
    
     @foreach ($review as $item)

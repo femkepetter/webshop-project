@@ -20,6 +20,7 @@ class CategoryController extends Controller
     {
         return view('category.show', [
             'category' => Category::all(),
+            'this_category' => $category,
             'products'   => $category->products()->get(),
             'product_type'  => ProductType::all(),
 

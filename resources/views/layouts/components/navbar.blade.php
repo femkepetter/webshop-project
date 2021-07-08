@@ -8,9 +8,7 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
             <ul class="navbar-nav mb-2 mb-lg-0 mx-auto">
                 @foreach ($product_type as $ptype)
                 <li class="nav-item  ms-md-3">
@@ -78,7 +76,6 @@
                     </div>
 
                     <table id="cart" class="table table-hover table-condensed">
-
                         <thead>
                             <tr>
                                 <th style="width:28%">Product</th>
@@ -88,7 +85,6 @@
 
                             </tr>
                         </thead>
-
                         <tbody>
                             @php $total = 0 @endphp
                             @if(session('cart'))
@@ -118,7 +114,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

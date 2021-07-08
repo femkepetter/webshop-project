@@ -41,9 +41,7 @@
         <main>
             @include('layouts.components.navbar')
             <section class="glass justify-content-center mx-auto shadow px-5 py-4">
-
-
-                <div class="row mx-auto px-md-5 gx-md-5 mb-5">
+                <div class="row px-md-5 gx-md-5 mb-5">
 
                     @yield('content')
 
@@ -75,9 +73,7 @@
                     </div>
                     <div class="col d-flex justify-content-center copyright"> ©Copyright Femke & Nina productions
                     </div>
-
                 </div>
-
             </section>
         </main>
 

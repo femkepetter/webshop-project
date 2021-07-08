@@ -70,10 +70,6 @@ nav {
     color: rgb(25, 2, 48) !important;
 }
 
-.nav-item {
-    // margin-left: 2rem;
-}
-
 .nav-link {
     color: rgb(25, 2, 48) !important;
     font-weight: 500;
@@ -112,11 +108,9 @@ nav {
 
 .btn-cart:hover {
     border-style: none;
-    background-image: linear-gradient(
-        to left bottom,
-        rgb(83, 158, 255),
-        #6dc9ff
-    );
+    background-image: linear-gradient(to left bottom,
+            rgb(83, 158, 255),
+            #6dc9ff);
     color: white;
 }
 
@@ -170,14 +164,16 @@ nav {
     }
 }
 
+.display-align {
+    margin: 0;
+}
+
 .circle-1,
 .circle-2 {
     background: white;
-    background: linear-gradient(
-        to right bottom,
-        rgba(177, 247, 250, 0.4),
-        rgba(250, 170, 250, 0.2)
-    );
+    background: linear-gradient(to right bottom,
+            rgba(177, 247, 250, 0.4),
+            rgba(250, 170, 250, 0.2));
     height: 20rem;
     width: 20rem;
     position: absolute;
@@ -197,11 +193,9 @@ nav {
 
 .circle-3 {
     background: rgb(97, 39, 190);
-    background: linear-gradient(
-        to right bottom,
-        rgba(162, 106, 252, 0.2),
-        rgba(250, 190, 255, 0.5)
-    );
+    background: linear-gradient(to right bottom,
+            rgba(162, 106, 252, 0.2),
+            rgba(250, 190, 255, 0.5));
     height: 30rem;
     width: 30rem;
     position: absolute;
@@ -213,11 +207,9 @@ nav {
 
 .circle-4 {
     background: rgb(97, 39, 190);
-    background: linear-gradient(
-        to right bottom,
-        rgba(173, 255, 244, 0.5),
-        rgba(155, 203, 248, 0.3)
-    );
+    background: linear-gradient(to right bottom,
+            rgba(173, 255, 244, 0.5),
+            rgba(155, 203, 248, 0.3));
     height: 50rem;
     width: 50rem;
     position: absolute;

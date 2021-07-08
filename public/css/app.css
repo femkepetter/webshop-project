@@ -11010,6 +11010,10 @@ nav {
     font-size: 1.5rem;
   }
 }
+.display-align {
+  margin: 0;
+}
+
 .circle-1,
 .circle-2 {
   background: white;
